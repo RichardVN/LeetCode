@@ -1,10 +1,11 @@
 # https://leetcode.com/problems/duplicate-zeros/
 """
 TIPS:
-    - Must be in place: think of shifting each element from original to expected ONCE, no inserts
+    - NOTE: Must be in place: think of shifting each element from original to expected ONCE, no inserts
         - Look at how much each element is shifted. What is it related to?
     - SORTED. Therefore duplicates will be next to each other
-    - We shift elements RIGHT. Therefore we iterate right to left to avoid jumping ahead of iterator
+    - NOTE: We shift elements RIGHT. Therefore we iterate right to left to avoid jumping ahead of iterator
+        - we WRITE to elements behind the READ pointer
 """
 
 class Solution:

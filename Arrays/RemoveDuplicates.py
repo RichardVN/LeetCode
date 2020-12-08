@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/duplicate-zeros/
-
+# NOTE: Two Pointer method with read_pointer (fast) and write_pointer (slow)
 # from collections import OrderedDict: useful for NO DUPLICATES, and in order
 class Solution:
     def removeDuplicates(self, nums):
