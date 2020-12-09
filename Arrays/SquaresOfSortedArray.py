@@ -1,35 +1,42 @@
 # https://leetcode.com/problems/squares-of-a-sorted-array/
+
+# NOTE: Key thing to notice is that the values from left decrease until 0, and then values to right increase from 0
+# the further from zero, the higher the square
+
+# SOLUTION 1 - use in place sort
 # Time: O(nlogn) due to sort
 # Space: O(1), overwrite in place, sort in place
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
-        # square and overwrite in place
         for i, num in enumerate(nums):
             nums[i] = num**2
-        nums.sort()
-        return nums
-# NOTE: this overwrites the original input array.
+            nums.sort()
+            return nums
 
-# NOTE: Two pointer method. 
-# No sorting, make use of the fact that the given array is sorted
-# after squaring, we strictly decrease towards middle, strictly increase from middle
-# Time: 
+# # SOLUTION 2 - use deque to append values to left in O(1). So we append biggest, and then smaller values to left of that.
+# from collections import deque
+# Time: O(n), no nested loops.
+# Space: O(n), we have to make an array to hold answer, size of N
+
+
 class Solution:
-    def sortedSquares(self, A: List[int]) -> List[int]:
-        return_array = [0] * len(A)
-        write_pointer = len(A) - 1
-        left_read_pointer = 0
-        right_read_pointer = len(A) - 1
-        left_square = A[left_read_pointer] ** 2
-        right_square = A[right_read_pointer] ** 2
-        while write_pointer >= 0:
-            if left_square > right_square:
-                return_array[write_pointer] = left_square
-                left_read_pointer += 1
-                left_square = A[left_read_pointer] ** 2
+    def sortedSquares(self, nums):
+        answer = []
+        left = 0
+        right = len(nums) - 1
+        while left <= right:                            # left == right if both are at value 0
+            if abs(nums[left]) >= abs(nums[right]):
+                answer.append(nums[left]*nums[left])
+                left += 1
             else:
-                return_array[write_pointer] = right_square
-                right_read_pointer -= 1
-                right_square = A[right_read_pointer] ** 2
-            write_pointer -= 1
-        return return_array
+                answer.append(nums[right]*nums[right])
+                right -= 1
+        # now we have answer list in decreasing order. We can in-place reverse in O(N) time
+        answer.reverse()
+        return answer
+
+
+solution = Solution()
+test_arr = [-5, -3, -1, 0, 2, 8]
+squares = solution.sortedSquares(test_arr)
+print(squares)
