@@ -14,22 +14,20 @@ Time complexity:
 #         self.val = x
 #         self.next = None
 
+
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
-        # empty list
+        # Empty list
         if not head:
             return False
-
-        # if single item, slow would initially equal fast
+        fast = head
         slow = head
-        fast = head.next
-
-        while slow != fast:
-            if fast is None or fast.next is None:
-                return False
-            # increment if fast isn't at end of list
-            slow = slow.next
+        # Iterate until fast is on tail node or the None after tail
+        while fast is not None and fast.next is not None:
+            # slow initially set same as fast. Make sure to increment first
             fast = fast.next.next
-        # broke out of loop. Slow is fast
-        return True
+            slow = slow.next
+            if slow == fast:
+                return True
+        return False
 
