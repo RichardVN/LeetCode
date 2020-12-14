@@ -21,32 +21,27 @@ then Fast has covered M + K, which is n WHOLE CIRCLES FROM ENTRY POINT.
 Set slow to beginning. Set rate of Fast to same as slow.
 We know slow AND fast are M distance from entry. When slow == fast, that is the entry node.
 """
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
 
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
         if not head:
             return None
 
+        # is there a cycle?
         slow = head
         fast = head
-
         while fast is not None and fast.next is not None:
             fast = fast.next.next
             slow = slow.next
             # fast meets slow at K steps front entry
             if fast == slow:
                 break
-        # If we broke because we hit end of list
+
+        # If we broke while loop because we hit end of list
         if fast is None or fast.next is None:
             return None
 
-        # found a loop. Now we increment M steps
+        # found a cycle. Now we increment M steps
         slow = head
         while slow != fast:
             slow = slow.next

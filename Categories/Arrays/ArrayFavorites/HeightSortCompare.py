@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/height-checker/
+# NOTE: The range of inputs is limited, positive integers. The range K = 100 < N elements in array.
 
 class Solution:
     def heightChecker(self, heights: List[int]) -> int:
