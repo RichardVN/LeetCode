@@ -31,6 +31,7 @@ class Solution:
         slow = head
         fast = head
         while fast is not None and fast.next is not None:
+            # increment before checking if fast == slow
             fast = fast.next.next
             slow = slow.next
             # fast meets slow at K steps front entry
