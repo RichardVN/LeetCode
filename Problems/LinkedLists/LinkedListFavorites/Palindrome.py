@@ -38,8 +38,8 @@ Intuition: We cannot iterate backwards from end like an array.
             w/o unequal values.
 
 Advantage: Constant space
-Time: O(N) copy to deque and pop from deque
-Space: O(N) deque
+Time: O(N) find midpoint O(N) reverse O(N) iterate through both halves
+Space: O(1) just pointers
 """
 
 
