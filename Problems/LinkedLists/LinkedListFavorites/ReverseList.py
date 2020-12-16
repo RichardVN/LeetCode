@@ -15,7 +15,9 @@ class Solution:
         while curr:
             # on last iteration, after will be None
             after = curr.next
+            # reverse the next "arrow"
             curr.next = before
+            # move before up a node, move current up a node (DONT USE NEXT)
             before = curr
             curr = after
 
