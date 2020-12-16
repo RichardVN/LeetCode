@@ -19,7 +19,8 @@ class Solution:
 
         current = dummy
         while current.next is not None:
-            # no step yet. The new next could be the bad value
+            # Do not step current yet. The new next could also contain bad value
+            # Are we safe to access current.next.next. YES we confirm that current.next is NOT None
             if current.next.val == val:
                 current.next = current.next.next
             # the next's val is good. We can step to it
