@@ -32,3 +32,17 @@ mid_idx_left = low + (high-low)//2
 mid_idx_right = low + (high-low)//2 + 1
 print('Even array left mid', even_array[mid_idx_left])
 print('Even array right mid', even_array[mid_idx_right])
+
+
+"""
+Find midpoint of linked list
+NOTE: in even node list, this retrieves the right mid point
+"""
+# slow = head
+# fast = head
+
+# while fast and fast.next:
+#     fast = fast.next.next
+#     slow = slow.next
+
+# mid_node = slow
