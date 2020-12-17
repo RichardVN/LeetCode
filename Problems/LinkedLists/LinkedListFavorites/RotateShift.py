@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/rotate-list/
 """
+Intuition:
 1. Find n, length of our list, by traversing. This is so we can get the "indices" of our nodes.
 2. k = k % N.   If k is equal to N, we do a full lap (no shift). K < N for proper indexing.
 3. We cut our list. The second part starts at N-Kth node. However, we need to go to the node before that to set it to point to None as new tail.
