@@ -1,14 +1,15 @@
+# https://leetcode.com/problems/copy-list-with-random-pointer/
 """
-Problem:
-While it is easy to deep copy LL with only next pointers,
-the random ptrs makes it difficult to access previous or
-future nodes without ruining traversal.
+Problem from random pointer:
+    - No way to go backwards from given node
+    - random could point forwards to a node that hasn't been created yet
+    - You have to ensure that if two nodes point to the first node, you don't create a duplicate
 NOTE: 
     Node1  --> Node2
       |          |
     Clone1    Clone2
 
-- each original node in the linked list is mapped with a clone node
+- Each original node in the linked list is mapped with a clone node. There are no duplicate nodes of same address.
 - We can access in O(1) time the current's clone, or the .next's clone, or the .random's clone
 - ** Given a ptr to a Node, we can access any nodes it points to in O(1) time.
     - If ALL nodes are in a hash map as keys, we can then access the key-value pairs in O(1) time.

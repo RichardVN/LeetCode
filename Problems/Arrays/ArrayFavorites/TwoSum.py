@@ -1,5 +1,13 @@
 
 # https://leetcode.com/problems/two-sum/
+"""
+Intuition:
+    - Use a hash map to keep track of seen values and their index
+    - Check if a num's complement is in the hash map
+
+Time: O(N)
+space: O(N)
+"""
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:

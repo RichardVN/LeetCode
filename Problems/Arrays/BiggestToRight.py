@@ -1,14 +1,16 @@
 # https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/
 """
-Intuition:
-Iterate right to left, so we know what biggest to right is
-
-NOTE: Tip: When using a temp variable, consider a,b = b,a notation. Collapse statements to one line to avoid overwrite
+NOTE: 
+Whenever we need temp, consider a,b = b,a variable swap. 
+Collapse statements to one line to avoid overwrite before assignment
     # python evaluates right hand expression and stores on stack, before assigning stuff on left hand
+
+Intuition:
+Iterate right to left, so at each element, we know what biggest to right is.
+Have a variable to store biggest seen so far, initialize with right most element.
 
 Time: O(N)
 Space: O(1)
-
 """
 class Solution:
     def replaceElements(self, arr: List[int]) -> List[int]:

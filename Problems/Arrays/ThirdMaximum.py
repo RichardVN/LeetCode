@@ -1,6 +1,11 @@
 # https://leetcode.com/problems/third-maximum-number/
 """
-NOTE: We only need the third max, so we can just allocate three variables that keep track of max seen so far
+NOTE: 
+    - Usually to keep track of max we can just have a max variable
+    - If we need the THIRD max, we can just have three variables for the top 3 numbers
+        - For each num: do a check and see if it slots into top 3. Shift the other max right accordingly
+        
+Only need three variables. This is CONSTANT space
 TIME: O(n) to loop and compare to max
 SPACE: O(3) ~ O(1)
 """

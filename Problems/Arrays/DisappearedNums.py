@@ -1,11 +1,23 @@
 # https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
 
 '''
-# Space: O(1)
-# Time: O(n)
-# NOTE: notice that the indices of the array
-# match the values of the array, if no disappearance (off by 1)
-# '''
+NOTE: 
+notice that the indices of the array
+match the values of the array, if no disappearance (off by 1)
+
+Intuition:
+- Option 1: Use a set to keep track of which numbers have been seen
+- Option 2: markup the original array in order to do in O(1) space
+    1. Mark the indices of seen numbers as NEGATIVE.  
+        NOTE: Make sure we do not access a negative index. Account for any offset (e.g. index [0, N-1] values [1, N])
+        ex. "if we see value of 1, we mark the value at index 0 as negative
+    2. Find a positive value, and its corresponding index/disappeared num
+
+
+Space: O(1)
+Time: O(n)
+
+'''
 
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:

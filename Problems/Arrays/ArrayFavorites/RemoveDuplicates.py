@@ -1,6 +1,18 @@
-# https://leetcode.com/problems/duplicate-zeros/
-# NOTE: Two Pointer method with read_pointer (fast) and write_pointer (slow)
-# from collections import OrderedDict: useful for NO DUPLICATES, and in order
+# https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+"""
+NOTE:
+    - sorted array => duplicates must be next to one another
+    - reword problem: find Unique nums
+
+Intuition:
+    - Fast pointer: read original values
+    - Slow pointer: write unique nums
+
+Alternative: hashset to remove duplicates
+
+Time: O(N)
+Space: O(1)
+"""
 class Solution:
     def removeDuplicates(self, nums):
         """

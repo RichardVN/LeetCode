@@ -1,5 +1,19 @@
 # https://leetcode.com/problems/height-checker/
-# NOTE: The range of inputs is limited, positive integers. The range K = 100 < N elements in array.
+"""
+NOTE: The range of inputs is limited, POSITIVE integers. The range K = 100 < N elements in array. => COUNT SORT
+
+Intuition:
+    - sort the array
+    - Compare the sorted_array to original array
+
+Count Sort:
+    - Time: O(N) using count sort
+    - Space: O(N) using count sort
+Inbuilt Sort:
+    - Time: O(N log N) using .sort()
+    - Space: O(1) using in place sort
+
+"""
 
 class Solution:
     def heightChecker(self, heights: List[int]) -> int:
@@ -22,6 +36,7 @@ class Solution:
             # 4. Initialize sorted_array using length of original array   O(N)
             sorted_array = [0] * len(arr)
 
+            # 5. Place nums into sorted_arr and decrement count 
             for num in arr:
                 placement_idx = count[num] - 1
                 sorted_array[placement_idx] = num

@@ -1,11 +1,22 @@
 # https://leetcode.com/problems/duplicate-zeros/
 """
-TIPS:
-    - NOTE: Must be in place: think of shifting each element from original to expected ONCE, no inserts
-        - Look at how much each element is shifted. What is it related to?
-    - SORTED. Therefore duplicates will be next to each other
-    - NOTE: We shift elements RIGHT. Therefore we iterate right to left to avoid jumping ahead of iterator
-        - we WRITE to elements behind the READ pointer
+NOTE:
+    - Array is SORTED. Duplicates will be next to one another
+    - In place:
+        - Think of shifting each element from input position to expected output position ONCE. ! Inserts would be O(N) each
+        - Strategy: Look at how much each element is shifted. Is there a pattern to the shift value
+    - We must shift Elements to the RIGHT. But this would make us WRITE ahead of the read pointer
+
+Intuition:
+    - First pass of array: get count of zeroes
+    - Second Pass:
+        - Iterate over each original value of array
+        - Write the original value into its new shifted position to the right (IF it is in bounds)
+        - NOTE: if we encounter a zero, we shift the original
+                    THEN: we decrement count and shift the duplicate zero
+
+Time: O(N)
+Space: O(1)
 """
 
 class Solution:

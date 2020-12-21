@@ -1,4 +1,18 @@
-# https: // leetcode.com/problems/duplicate-zeros/
+# https://leetcode.com/problems/remove-element/
+"""
+NOTE: The order can be changed --> we can use a set with O(N) space
+
+TIP: Reword the problem. Remove all instaces of "val"  ===  Find all nums that are NOT "val"
+
+Intuition:
+    - Two pointer method
+        - fast pointer reads all values of original
+        - slow pointer writes in values that are not the "Bad" value
+        NOTE: slow pointer never passes fast pointer
+
+Time: O(N)
+Space: O(1)
+"""
 
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:

@@ -1,8 +1,22 @@
 # https://leetcode.com/problems/valid-mountain-array/submissions/
-# TIPS:
-# Get used to for loop over range, and while loop constructs
-# when using i-1 or i+1 in a loop, make sure to adjust loop range
-# first condition of while loop is always checked before second
+"""
+NOTE: 
+    - if we access value at i+1, then i+1 has to be less than size N
+    - In multiple while conditions. The fist condition is checked
+    and can break the loop before accessing the second condition
+
+Intuition:
+    1. Climb "Up" the array. While loop iterates while a) indices within bounds and b) increasing slope
+    2. If slope no longer increasing, assign value to Peak index
+    3. Check if peak is valid (not one of the ends)
+        a.) if peak is invalid return False
+    4. Iterate from peak to end of array
+        a.) if slope does NOT decrease return False
+    5. Return true
+
+Time: O(N), Iterate from 0 to peak, then peak to N-1
+Space: O(1)
+"""
 class Solution:
     def validMountainArray(self, arr: List[int]) -> bool:
         N = len(arr)

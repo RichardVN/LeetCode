@@ -1,5 +1,18 @@
 # https://leetcode.com/problems/merge-sorted-array/
+"""
+NOTE: Both arrays are already sorted
 
+Intuition:
+- Two pointer method
+- Start from ends of both arrays, and append largest value to END of nums1 to avoid overwrite
+    - iterate either i or j
+    - iterate k
+- When ONE list is finished (index is -1 or less):
+    - Append the rest of the other list that still has values
+
+Time: O(m+n)
+Space: O(1)
+"""
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """

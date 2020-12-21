@@ -1,9 +1,17 @@
 # https://leetcode.com/problems/move-zeroes/
-# NOTE: a , b = b, a variable swap is O(1)
-# Optimal solution two-pointer method:
-# i : slow, write pointer
-# j : fast, read pointer. fast pointers can go in for loop
-# anything left of slow pointer is non-zero, anything to right of slow pointer is zero or unread
+"""
+Similar to odds, evens. Use variable swap to bring desired values to front
+NOTE: a, b = b, a variable swap is O(1)
+
+Intuition:
+    Optimal solution two-pointer method:
+    i : slow, write pointer
+    j : fast, read pointer. fast pointers can go in for loop
+    anything left of slow pointer is non-zero, anything to right of slow pointer is zero or unread
+
+Time: O(N)
+Space: O(1)
+"""
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
         """
