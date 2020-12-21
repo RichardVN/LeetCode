@@ -4,6 +4,18 @@ Time: O(N) to transverse list
 Space: O(1) only pointers
 
 NOTE: Triple pointer method. Before, current, after. Set after to current.next as FIRST step in while loop
+
+Intuition:
+    1. Initialize three pointers. 
+        Before = None
+        Current = head
+        After = head
+    2. Step through list while current is not None:
+        a. Set after to node after current
+        b. redirect current.next
+        c. step before to current
+        d. step current to after
+    3. NOTE: return before, tail of old list, and HEAD of reversed list
 """
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:

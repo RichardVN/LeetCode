@@ -1,7 +1,4 @@
 """
-Time: O(a+b) if we transverse both lists entirely
-Space: O(1)
-
 example diagram:
 
         a1 -> a1 ->
@@ -15,8 +12,15 @@ Let C nodes after intersection be C
 pointer A hits intersection after   A + C + B    nodes
 pointer B hits intersection after   B + C + A    nodes
 
-If we increment one node at a time, they will eventually hit an intersection, IF they can jump lists
-If there is NO intersection. Then they will meet at NONE "node" after a + b steps (transverse both lists)
+Intuition:
+    If we increment one node at a time, they will eventually hit an intersection, IF they can jump lists
+    If there is NO intersection. Then they will meet at NONE "node" after a + b steps (transverse both lists)
+
+NOTE: we have to let the pointers on to the None "node" before switching lists.
+
+Time: O(a+b) if we transverse both lists entirely
+Space: O(1)
+
 """
 
 

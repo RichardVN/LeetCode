@@ -7,8 +7,6 @@ Advantage: Don't mess with original list value
 Time: O(N) copy to deque and pop from deque
 Space: O(N) deque
 """
-
-
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
         if not head:
@@ -31,18 +29,16 @@ class Solution:
 
 """
 Solution 2 - OPTIMAL
-Intuition: We cannot iterate backwards from end like an array.
-            Find midpoint of linked list using fast, slow pointers.
-            Reverse the second half of linked list from mid onwards.
-            Iterate through both halves, return true if made it to end of one half 
-            w/o unequal values.
+Problem: We cannot iterate backwards from end like an array (no 'prev')
+Intuition: 
+    1. Find midpoint of linked list using fast, slow pointers. It does not matter if we find the left or right mid in even list.
+    2. Reverse the second half of linked list from mid onwards.
+    3. Iterate through both partitions, return true if made it to end of one partition w/o unequal values.
 
 Advantage: Constant space
 Time: O(N) find midpoint O(N) reverse O(N) iterate through both halves
 Space: O(1) just pointers
 """
-
-
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
         # empty list is a palindrome

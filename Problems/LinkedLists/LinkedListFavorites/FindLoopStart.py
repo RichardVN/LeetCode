@@ -1,14 +1,16 @@
 
 # https://leetcode.com/problems/linked-list-cycle-ii/
 """
-Time: O(N) to find cycle, less than O(n) to go M steps
-Space: O(1)
+Intuition:
+    - Use Floyd's cycle detection
+    NOTE: While loop can break if 1. Fast reaches end OR 2. cycle is found
 
 M = Distance to cycle entry (E)
 K = Distance covered within cycle before meeting point (X)
 L = length of cycle
 n = number of cycles
 
+NOTE:
 Fast and slow meet at  M + K = 2(M + K) - nL
 * We subtract integer multiples of cycle length to get fast to same spot in cycle as slow
 Simplify to: M + K = nL
@@ -20,6 +22,9 @@ then Fast has covered M + K, which is n WHOLE CIRCLES FROM ENTRY POINT.
 
 Set slow to beginning. Set rate of Fast to same as slow.
 We know slow AND fast are M distance from entry. When slow == fast, that is the entry node.
+
+Time: O(N) to find cycle, less than O(n) to go M steps
+Space: O(1)
 """
 
 class Solution:

@@ -1,12 +1,13 @@
 # https://leetcode.com/problems/odd-even-linked-list/
 """
 NOTE: Try drawing original array jagged, with odd nodes top and even nodes bottom.
-1. Get sublist of odd Nodes, with odd_head at head
-    a.) use odd_tail to iterate through original list and append
-2. Get sublist of even Nodes, with even_head at head.next
-    a.) use even_tail to iterate through original list and append
-    b.) Because even_tail is ahead, we use it to break out of while loop
-3.) append even list to back of odd list.  odd_tail.next = even_head
+Intuition
+    1. Get sublist of odd Nodes, with odd_head at head
+        a.) use odd_tail to iterate through original list and append
+    2. Get sublist of even Nodes, with even_head at head.next
+        a.) use even_tail to iterate through original list and append
+        b.) Because even_tail is ahead, we use it to break out of while loop
+    3.) append even list to back of odd list.  odd_tail.next = even_head
 Time: O(N)
 Space: O(1)
 """

@@ -1,3 +1,7 @@
+"""
+NOTE:
+compared to singly-linked-list, we only need one pointer "temp" to point to the before node. (current.prev)
+"""
 def reverse(head):
     temp = None
 

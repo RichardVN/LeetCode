@@ -1,11 +1,18 @@
 # https://leetcode.com/problems/rotate-list/
 """
+NOTE: 
+    - if K = N, then there is no shift
+        - We can do K % N to get a shift within size
+    - a shift K to the right is equivalent of shift  N-K to the left
 Intuition:
-1. Find n, length of our list, by traversing. This is so we can get the "indices" of our nodes.
-2. k = k % N.   If k is equal to N, we do a full lap (no shift). K < N for proper indexing.
-3. We cut our list. The second part starts at N-Kth node. However, we need to go to the node before that to set it to point to None as new tail.
+1. Find N, length of our list, by traversing. This is so we can get the "indices" of our nodes.
+2. Change K to fit within size of list. k = k % N.   If k is equal to N, we do a full lap (no shift). K < N for proper indexing.
+3. We cut our list. The second part starts at N-Kth node. 
+    a. go to the node N-Kth node, set it to point to None as new tail.
+        for i in range(N - K - 1):
+            curr = curr.next  # cur ends at index N - K - 1
 4. Find the tail of the original second part.
-4. Connect the secont part's tail to the original head
+5. Connect the secont part's tail to the original head
 
 TIME: O(N)
 SPACE: O(1)

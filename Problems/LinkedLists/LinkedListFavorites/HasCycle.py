@@ -1,5 +1,8 @@
 # https://leetcode.com/problems/linked-list-cycle/
 """
+Intuiution: Use Floyd's tortoise and hare to find cycle. 
+    Note that fast either ends on None OR fast.next ends on None, depending on list parity
+
 Time complexity:
     - No Cycle: O(N) fast pointer reaches end
     - Cycle: O(N + K) where K is cyclic length, reduce O(N)

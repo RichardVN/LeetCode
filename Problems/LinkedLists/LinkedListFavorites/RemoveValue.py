@@ -1,11 +1,17 @@
 # https://leetcode.com/problems/remove-linked-list-elements/
 """
-Time: O(n)
-Space: O(1)
+NOTE: 
+- we need the node before the node w/ bad value to reassign
+    - Dummy node before head
+- since we access current.next.val, we have to ensure current.next is not None
 
-NOTE: we need the node before the node w/ bad value to reassign
-        since we access current.next.val, we have to ensure current.next is not None
-        Reassign head to the node next to dummy value
+Intuition:
+    1. Set dummy node in front of head
+    2. Step through list while iterating cur. Conditional, ensure cur.next is NOT none
+        a. if cur.next.val is bad value, set cur.next = cur.next.next
+    3. return dummy.next
+Time: O(n)
+Space: O(1)    
 """
 
 class Solution:
