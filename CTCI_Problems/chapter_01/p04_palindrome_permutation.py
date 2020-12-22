@@ -2,21 +2,51 @@
 import unittest
 from collections import Counter
 
+"""
+NOTE:
+    - Whitespace and non-letter characters do not matter
+    - Characteristic of palindrome: Each char (except maybe one) has an even parity
+Intuition:
+    - Step through string and add char to hash map if it is a char. Increment counts
+    - Step through hash map, if there is more than one odd parity, it is not palindrome
 
+"""
 def is_palindrome_permutation(phrase):
     """checks if a string is a permutation of a palindrome"""
-    table = [0 for _ in range(ord("z") - ord("a") + 1)]
-    countodd = 0
-    for c in phrase:
-        x = char_number(c)
-        if x != -1:
-            table[x] += 1
-            if table[x] % 2:
-                countodd += 1
-            else:
-                countodd -= 1
 
-    return countodd <= 1
+    char_count = dict()
+    odd_parity_seen = False
+    for c in phrase:
+        # Casing DOES NOT MATTER
+        c = c.lower()
+        if c.isalpha():
+            if c in char_count:
+                char_count[c] += 1
+            else: 
+                char_count[c] = 1
+    
+    for val in char_count.values():
+        if val % 2 != 0:
+            # we have more than one odd parity
+            if odd_parity_seen:
+                return False
+            # set flag for seeing one odd parity
+            else:
+                odd_parity_seen = True
+    return True
+
+    # table = [0 for _ in range(ord("z") - ord("a") + 1)]
+    # countodd = 0
+    # for c in phrase:
+    #     x = char_number(c)
+    #     if x != -1:
+    #         table[x] += 1
+    #         if table[x] % 2:
+    #             countodd += 1
+    #         else:
+    #             countodd -= 1
+
+    # return countodd <= 1
 
 
 def char_number(c):

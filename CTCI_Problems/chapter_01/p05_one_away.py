@@ -2,18 +2,27 @@
 import time
 import unittest
 
+"""
+NOTE: Realize the different cases of edits
+1. Replace: Strings must be same length. But there can only be one mismatch (adv both ptrs)
+2. Insert: One string is one character longer than the other. Only one mismatch (adv ptr of longstring)
+3. Delete: ***THIS IS SAME AS INSERT. Just make sure that you input short_str, long_str in correct order
+
+"""
 
 def are_one_edit_different(s1, s2):
     """Check if a string can converted to another string with a single edit"""
     if len(s1) == len(s2):
         return one_edit_replace(s1, s2)
+    # s1 is shorter by one
     elif len(s1) + 1 == len(s2):
         return one_edit_insert(s1, s2)
+    # s2 is shorter by one
     elif len(s1) - 1 == len(s2):
         return one_edit_insert(s2, s1)
     return False
 
-
+""" INTUITION: Upon mismatch, advance BOTH pointers and set edit flag. """
 def one_edit_replace(s1, s2):
     edited = False
     for c1, c2 in zip(s1, s2):
@@ -23,7 +32,7 @@ def one_edit_replace(s1, s2):
             edited = True
     return True
 
-
+""" INTUITION: Upon mismatch advance pointer of LONGER string, set edit flag"""
 def one_edit_insert(s1, s2):
     edited = False
     i, j = 0, 0

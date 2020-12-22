@@ -2,7 +2,14 @@
 import unittest
 from collections import Counter
 
-
+"""
+Intuition:
+    - NOTE: Permutation: 1. MUST be same length   2. Same string when sorted
+    - Sort both strings
+    - Iterate over both strings from start, if there is mismatch, it is NOT permutation
+Time: O(n log n) sort
+Space: O(1) if we do in place and change input
+# """
 def check_permutation_by_sort(s1, s2):
     if len(s1) != len(s2):
         return False
@@ -12,7 +19,15 @@ def check_permutation_by_sort(s1, s2):
             return False
     return True
 
-
+"""
+Intuition:
+    NOTE: Permutation:    1. Same length        2. Same counts of each character
+    - Count the occurances of each character
+    - Create a character to count map using an Array. Indices are ascii values, values are counts
+    - Walk through string 1. Convert char to ASCII value, increment count
+    - Walk through string 2. Convert char to ASCII value, decrement count
+        - IF the count is 0, that means our char is unique OR we have too many of it. return FALSE
+"""
 def check_permutation_by_count(str1, str2):
     if len(str1) != len(str2):
         return False

@@ -1,7 +1,12 @@
 # O(N)
 import unittest
 
-
+"""
+Intuition:
+    - Create an array of 128 to hold ASCII characters (clarify assumption)
+    - Each time we encounter a character, set boolean flag at its index to TRUE
+        - If we encounter a true, the character is not unique
+"""
 def is_unique_chars_algorithmic(string):
     # Assuming character set is ASCII (128 characters)
     if len(string) > 128:
@@ -21,6 +26,7 @@ def is_unique_chars_algorithmic(string):
 
 
 def is_unique_chars_pythonic(string):
+    # if there any nonunique / duplicates, then the length of set will be smaller then chars in string
     return len(set(string)) == len(string)
 
 
