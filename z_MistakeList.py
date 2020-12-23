@@ -4,6 +4,7 @@ COMMON MISTAKES
 General:
     - using = instead of ==
     - need to check if key in dictionary, before incrementing d[key]
+    - When using a loop, you must iterate over an ITERABLE.  such as Range(int)
 
 Strings:
     - If casing does not matter, convert string to .lower()

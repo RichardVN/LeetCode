@@ -1,14 +1,23 @@
 import time
 import unittest
 
+"""
+Intuition:
+    - Initialize an array to hold the "compressed string" that we will convert to string
+    - Upon each unique character, append the previous character and reset the count
+    - If not unique character, increase the count
+    - # NOTE: we need to add the last repeated character
+"""
 
 def compress_string(string):
     compressed = []
     counter = 0
 
     for i in range(len(string)):
+        # encountered a new char. Cannot compare to previous, if we are at index -
         if i != 0 and string[i] != string[i - 1]:
             compressed.append(string[i - 1] + str(counter))
+            # reset char count
             counter = 0
         counter += 1
 
