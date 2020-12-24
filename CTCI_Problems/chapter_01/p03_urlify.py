@@ -1,7 +1,20 @@
 # O(N)
 import unittest
 
-
+"""
+NOTE:
+    - we are working IN PLACE with static array. Else appendting to dyn arr would be easy.
+    - we are replacing a character with a larger substring of three characters
+    - Therefore each character will be at same position OR shifted to the right
+        - we want to iterate right to left to avoid overwrite
+    - we KNOW that the given result string has exactly enough spaces to accomadate %20
+Intuition:
+    ** set-up:  Convert string into array so we can write by index
+    1. Have a pointer over original string (read), and walk backwards
+    2. Have a write pointer to end of the result string
+    3. Upon a character, insert character and decrement write pointer
+    4. Upon white string, insert %20 into slice of same size and decrement 3
+"""
 def urlify_algo(string, length):
     """replace spaces with %20 and removes trailing spaces"""
     # convert to list because Python strings are immutable
