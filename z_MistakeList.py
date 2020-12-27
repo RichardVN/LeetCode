@@ -1,6 +1,10 @@
 """
 COMMON MISTAKES
 
+LOOPS:
+    - when using RANGE make sure that you pass in an INT
+    - can only use for VAL in X, if X is iterable NOT an int
+
 General:
     - using = instead of ==
     - need to check if key in dictionary, before incrementing d[key]
