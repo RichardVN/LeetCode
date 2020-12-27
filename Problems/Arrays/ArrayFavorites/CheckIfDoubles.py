@@ -2,8 +2,8 @@
 
 """
 NOTE: Care for case in which the 2N double is after N. For each value, we want to check if we have seen its half.
-In two sum, we only had one other value (complement) that would make function return true
-in this problem, we have TWO possible values - n*2 and n//2 that could make the function return true
+    - In two sum, we only had one other value (complement) that would make function return true
+    - in this problem, we have TWO possible values - n*2 and n//2 that could make the function return true
 
 Intuition:
     - Put seen values in a set
