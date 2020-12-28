@@ -1,0 +1,48 @@
+Problems:
+https://leetcode.com/problems/max-consecutive-ones-iii/discuss/247564/javacpython-sliding-window/379427?page=3
+
+Examples:
+    - Consecutive Ones
+    - Minimum Size Subarray Sum
+    - Buy Sell Stock
+
+When to use:
+    - Data structure of sequential elements (string, array, linked list)
+    - We are looking for a CONTIGUOUS subsection
+    - We have a CONSTRAINT of elements within window for window to be valid
+    - We are trying to OPTIMIZE a value
+        1. Get the smallest or largest window size (i-j+1)
+        2. Some other value that we calculate at each window and keep running min/max of, e.g. max profit
+
+How to use:
+    - ** UPDATING CONSTRAINT    
+        - update j, THEN update constraint for new window value
+        - update constraint, THEN update i for removed window value
+    - Two pointers. 
+        Pointer 1: "fast" pointer that reads through all values of array. Makes step each iteration, such as for loop
+        Pointer 2: "slow" pointer that represents the start of the window
+    NOTE: Although we may have a nested "while loop" inside a for loop, in total i and j may only travel N elements each
+            We are NOT looping through N elements for each iteration of j using while loop
+            Because a window size of 0 is always valid
+
+Minimum Window:
+    1. Initialize the max/min value we are trying to optimize for (optional if we just need BIGGEST window size)
+    2. Initialize the constraint of elements WITHIN window (e.g. maximum zeroes, minimum sum of window)
+    3.. For loop in which we increment fast pointer through data structure (expand window)
+        a. depending on the value at window_end j, we update the constraint variable
+        b. While we have met the constraint that makes window VALID, increment i until INVALID
+            i.) Record optimized value
+            ii.) ** Update constraint variable from value we remove from window BEFORE increment i
+            iii.) Keep moving window_start i (until break constraint, and we move to next j)
+    4. return optimized value
+
+Maximum window:
+    NOTE: if we have a variable to keep track max window size (instead of maintaining the window size of answer)
+          Then we can have a while loop that increments until the constraint is met, similar to above
+    1. Initialize the constraint variable of the window
+    2. For loop in which we increment fast pointer
+        a. Update constraint variable based on j
+        b. If we have met constraint that makes window INVALID, increment i until VALID and we can expand w/o update i
+            i.) ** Update the constraint of value we remove from window before increment i 
+            ii.) move i to maintain size of the previous valid window
+    3. return size of window

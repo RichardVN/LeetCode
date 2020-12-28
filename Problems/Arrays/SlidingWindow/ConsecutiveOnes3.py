@@ -1,3 +1,4 @@
+# NOTE: The window size represents the longest length subarray that AT ONE POINT was valid
 # Same as consecutive ones II
 # use for loop instead of while loop
     # NOTE: key difference is that the iterator in for loop only makes it to last index N-1, and never becomes N
