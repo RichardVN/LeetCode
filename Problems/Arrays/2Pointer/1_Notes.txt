@@ -1,0 +1,25 @@
+When do we want to use two pointer?
+    - Sorted arrays
+    - We want to modify array in place
+        - Want to find specific "good" values
+        - Want to reorganize by swapping
+
+There are usually two types of two pointer problems
+
+I: Pointers at the end of the iterable
+    - we have a pointer at front and back
+    - we walk both pointers towards the middle until they are equal
+    Examples:
+        1. Palindrome
+        2. Reverse array or reverse string
+        3. Two Sum - Sorted
+
+II. "Fast" pointer and "Slow" pointer
+    - Two pointers start iteration at same location, but different step size
+    - The "Fast" pointer reads over all elements in O(N), can be implemented via for loop
+    - The "Slow" pointer writes in the values that we want
+        - Slow pointer may overwrite original values to achieve O(1) space
+        - The slow pointer should never pass fast pointer
+    Examples:
+        1. FIND GOOD VALUES: Remove duplicates / Find unique
+        2. SWAP problems: Move zeroes to end / sort odds then evens 

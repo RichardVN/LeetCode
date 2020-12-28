@@ -25,7 +25,7 @@ class Solution:
             lr_sum = numbers[left] + numbers[right]
             if lr_sum == target:
                 print(left, right)
-                return [left + 1, right + 1]
+                return [left, right]
             elif lr_sum > target:
                 right -= 1
             else:
