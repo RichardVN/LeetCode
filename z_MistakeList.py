@@ -8,6 +8,9 @@ LOOPS:
         - ex. while i < 0 or j < 0     NOT    while i OR j < 0:       <--- Infinite loop, basically while 1
     - If using two pointers, but one pointer is the i in a for loop, make sure you manually increment the other pointer
 
+For Loop:
+    - if you find yourself needing the value of i - 1 at START of loop, consider working with i at END of loop before iteration
+
 CONDITIONALLS:
     - If you put a return in a conditional, ensure that there is a return if that condition is not met
 
@@ -18,7 +21,9 @@ General:
     - Unpack operator goes BEFORE iterable  ex.  *my_list
     - Do not use KEYWORDS as var namex. ex. str, list, dict, set, next
     
-
+Classes:
+    - each method takes in a SELF parameter
+        - If in a method definition we use another method, we call using self.method2()
 Strings:
     - You can convert a string into a list of chars. You CANT convert a list of 'chars' into a string
     - If casing does not matter, convert string to .lower()

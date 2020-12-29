@@ -15,7 +15,7 @@ print('Even array right mid', even_array[mid_idx_right])
 
 """
 Find Midpoint using first index and last index
-NOTE: if low is just 0 index,  then   mid = len(arr) - 1 // 2
+NOTE: if low is just 0 index,  then   mid = len(arr)-1 // 2
 """
 print('-- Midpoint using lowest, highest indices -- ')
 

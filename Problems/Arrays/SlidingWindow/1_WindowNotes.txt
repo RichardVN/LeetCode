@@ -7,10 +7,10 @@ Examples:
     - Buy Sell Stock
 
 When to use:
-    - Data structure of sequential elements (string, array, linked list)
-    - We are looking for a CONTIGUOUS subsection
-    - We have a CONSTRAINT of elements within window for window to be valid
-    - We are trying to OPTIMIZE a value
+    - 1. Data structure of sequential elements (string, array, linked list)
+    - 2. We are looking for a CONTIGUOUS subsection
+    - 3. We have a WINDOW CONSTRAINT of elements within window for window to be valid
+    - 4. We are trying to OPTIMIZE a value (keep running max/min)
         1. Get the smallest or largest window size (i-j+1)
         2. Some other value that we calculate at each window and keep running min/max of, e.g. max profit
 
@@ -21,6 +21,7 @@ How to use:
     - Two pointers. 
         Pointer 1: "fast" pointer that reads through all values of array. Makes step each iteration, such as for loop
         Pointer 2: "slow" pointer that represents the start of the window
+
     NOTE: Although we may have a nested "while loop" inside a for loop, in total i and j may only travel N elements each
             We are NOT looping through N elements for each iteration of j using while loop
             Because a window size of 0 is always valid
@@ -38,7 +39,7 @@ Minimum Window:
 
 Maximum window:
     NOTE: if we have a variable to keep track max window size (instead of maintaining the window size of answer)
-          Then we can have a while loop that increments until the constraint is met, similar to above
+          Then we can have a while loop that increments until the constraint is met, similar to above. And update best if valid
     1. Initialize the constraint variable of the window
     2. For loop in which we increment fast pointer
         a. Update constraint variable based on j
