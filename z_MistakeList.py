@@ -25,7 +25,8 @@ Classes:
     - each method takes in a SELF parameter
         - If in a method definition we use another method, we call using self.method2()
 Strings:
-    - You can convert a string into a list of chars. You CANT convert a list of 'chars' into a string
+    - To slice a reversed copy of a string,  use  reversed_string = string[::-1]
+    - You can convert a string into a list of chars. You CAN NOT convert a list of 'chars / strings' into a single string
     - If casing does not matter, convert string to .lower()
     - If need to modify string, convert to list and then back with "".join(lst)
     - If you have a LIST of strings and need to group characters by index, use list(zip(*strs))
