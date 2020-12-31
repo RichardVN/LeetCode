@@ -11,7 +11,7 @@ LOOPS:
 For Loop:
     - if you find yourself needing the value of i - 1 at START of loop, consider working with i at END of loop before iteration
 
-CONDITIONALLS:
+CONDITIONALS:
     - If you put a return in a conditional, ensure that there is a return if that condition is not met
 
 General:
@@ -38,8 +38,5 @@ Array:
 Linked List:
     - If we access cur.next.next, cur.next cannot be None
     - Not incrementing current or fast within While loop
-
-
-
 
 """
