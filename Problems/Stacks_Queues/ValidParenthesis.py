@@ -1,3 +1,16 @@
+"""
+Intuition:
+    - Create a hash map that associates closing brace with open brace
+    - Iterate through the string
+        - Every time we meet a open bracket, pop onto stack
+        - Every time we meet closing bracket, pop whatever on the stack
+            - Check to see if stack is empty
+            - Check that the open brace associated w/ closing brace (from hash map) is the same char we popped off
+    - Return true if the stack is empty
+
+Time: O(N)  to iterate through each character in the string
+Space: O(1) the hash map is constant space and does not depend on size of string
+"""
 class Solution:
     def isValid(self, s: str) -> bool:
         # dict to lookup corresponding closing paranthesis
