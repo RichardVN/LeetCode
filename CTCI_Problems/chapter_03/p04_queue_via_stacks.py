@@ -1,4 +1,15 @@
 # 3.4 Queue Via Stacks
+"""
+Intuition:
+    - Implement queue via two stacks
+    - Stack_new has newest values on top
+        - Every time we push(), we push to stack_new
+    - Stack_old has oldest values on top
+        - Every time we pop(), we pop from stack_old
+        - If the stack is empty, we reverse stack_new and dump it into stack_old ... 
+            - Pop from stack_new until empty and push on stack_old
+"""
+
 import unittest
 
 from chapter_03.stack import Stack
