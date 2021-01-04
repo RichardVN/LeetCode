@@ -1,6 +1,13 @@
 """
 COMMON MISTAKES
 
+General:
+    - using = instead of ==
+    - need to check if key in dictionary, before incrementing d[key]
+    - When using a loop, you must iterate over an ITERABLE.  such as Range(int)
+    - Unpack operator goes BEFORE iterable  ex.  *my_list
+    - Do not use KEYWORDS as var namex. ex. str, list, dict, set, next, OPEN
+
 LOOPS:
     - when using RANGE make sure that you pass in an INT
     - can only use for VAL in X, if X is iterable NOT an int
@@ -14,16 +21,6 @@ For Loop:
 CONDITIONALS:
     - If you put a return in a conditional, ensure that there is a return if that condition is not met
 
-General:
-    - using = instead of ==
-    - need to check if key in dictionary, before incrementing d[key]
-    - When using a loop, you must iterate over an ITERABLE.  such as Range(int)
-    - Unpack operator goes BEFORE iterable  ex.  *my_list
-    - Do not use KEYWORDS as var namex. ex. str, list, dict, set, next, OPEN
-    
-Classes:
-    - each method takes in a SELF parameter
-        - If in a method definition we use another method, we call using self.method2()
 Strings:
     - To slice a reversed copy of a string,  use  reversed_string = string[::-1]
     - You can convert a string into a list of chars. You CAN NOT convert a list of 'chars / strings' into a single string
@@ -39,4 +36,7 @@ Linked List:
     - If we access cur.next.next, cur.next cannot be None
     - Not incrementing current or fast within While loop
 
+Classes:
+    - each method takes in a SELF parameter
+        - If in a method definition we use another method, we call using self.method2()
 """
