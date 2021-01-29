@@ -1,3 +1,12 @@
+"""
+Transpose matrix = flip across main diagonal
+NOTE: the key is to swap matrix[i][j] with matrix[j][i]. 
+    The inner for loop must go from i up to N.
+
+Time: O(N) where there are N elements
+Space: O(1)
+"""
+
 def transpose_matrix(matrix):
     N = len(matrix)
     for i in range(N):
