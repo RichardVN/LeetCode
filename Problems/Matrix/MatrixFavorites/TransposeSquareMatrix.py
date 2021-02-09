@@ -1,5 +1,6 @@
 """
 Transpose matrix = flip across main diagonal
+We can do in place if it is a square matrix
 NOTE: the key is to swap matrix[i][j] with matrix[j][i]. 
     The inner for loop must go from i up to N.
 
