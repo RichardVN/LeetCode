@@ -19,7 +19,7 @@ Approach
 
 
 class Solution:
-    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+    def findMaxConsecutiveOnes(self, nums) -> int:
         zeroes_in_window = 0
 
         start = 0
