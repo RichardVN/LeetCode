@@ -13,8 +13,20 @@ We can use HASH MAP, to find the RIGHTMOST occurance of character
 - find last occurence of letter using hash map, set right marker to that
 - step through letters up until right, expanding right if rightmost is past partition
 - once i == right, we append length of partition and move left
+TIME: O(N)
+SPACE: O(26)
 
 Procedure:
+- Initialize
+    - hash map of char to rightmost index
+    - left and right markers for current position
+    - result array for partition lengths
+- step through entire array
+    - look at character's rightmost and move right to it IF it is more right
+    - if we reach the index of right
+        - append length to result array
+        - move left marker
+- return result array
 """
 
 class SolutionClean:
