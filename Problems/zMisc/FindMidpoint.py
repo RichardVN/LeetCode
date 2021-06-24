@@ -1,5 +1,5 @@
 """
-Find Midpoint using number of items / length of array
+Find Midpoint using number of elements / length of array
 """
 print('-- Midpoint using number of items len(arr) -- ')
 

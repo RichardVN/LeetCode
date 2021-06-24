@@ -1,5 +1,10 @@
 # https: // leetcode.com/problems/add-two-numbers/
 """
+CATCHES:
+- must consider carry into digit total
+- check that the ptr is not at None, before accessing .val and iterating ptr
+- after while loop, check for carry and add additional node if necessary
+
 Intuition:
 Iterate over both lists, from ones place first node , then tens place .. etc
 Add values of both lists. NOTE: And any leftover carry
