@@ -10,7 +10,12 @@ NOTES:
     THIS IS 1-INDEXED
     
 Approach:
-- 2 pointer method while l < r
+- 2 pointer method while l < r.  L starts first index, R starts end index
+- WHILE left less than right
+    - Find total of left and right
+    - if less than target:  increment L
+    - if more than target: decrement R
+    - if equal target:  return array of [L,R]
 """
 # ex;  2  7  11  15         target = 9 
 #      l         r

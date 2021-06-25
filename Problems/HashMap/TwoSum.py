@@ -1,13 +1,17 @@
 
 # https://leetcode.com/problems/two-sum/
 """
+VARIANT:
+    Find unique pairs:
+        add unique pairs in sorted tuple into a set, to remove duplicates
+
 Intuition:
     - Use a hash map to keep track of seen values and their index
         KEY: element value   VALUE:  element index
     - Check if a num's complement is in the hash map
 
 Time: O(N)
-space: O(N)
+space: O(N) for hash map
 """
 
 class Solution:
