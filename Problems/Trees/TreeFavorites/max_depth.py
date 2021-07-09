@@ -36,3 +36,25 @@ class Solution:
                     q.append(node.right)
         return height
             
+""" Iterative dfs, pass running sum thru tuple"""
+class Solution:
+    def maxDepth(self, root: TreeNode) -> int:
+        # iterative bfs
+        # stack of node, height at node
+        best_height = 0
+        
+        if not root:
+            return 0
+        s = [(root, 1)]
+        
+        while s:
+            node, current_height = s.pop()
+            # if leaf node
+            if not node.left and not node.right:
+                best_height = max(best_height, current_height)
+            if node.right:
+                s.append((node.right, current_height + 1))
+            if node.left:
+                s.append((node.left, current_height+1))
+        return best_height
+        
