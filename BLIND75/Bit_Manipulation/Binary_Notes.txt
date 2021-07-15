@@ -1,0 +1,16 @@
+Bit operators are
+
+Convert Decimal to Binary:
+- Divide by 2 until reach 0, keep track of remainders 
+- Binary number is string of remainders from bottom up
+
+Convert Binary to Decimal:
+- Add value of 2^0 + 2^1 ... 
+
+Print Binary string of integer x:
+    print(bin(x))
+
+&   AND
+|   OR 
+^   XOR 
+~   NOT

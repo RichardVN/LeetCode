@@ -5,13 +5,18 @@ Intuition:
     - one pass to find product to left  ,  left -> right
     - one pass to find product to right  , right -> left
 
+Time:O(N), multiple linear passes to build product_left and product_right arrays
+Space: O(2N), space to hold products_left and Product_right
+
+NOTE: for O(1) space, just build product_left into result array
+        - then, iterate reverse, with a variable to hold product_right
 """
 
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         answer = [0] * len(nums)
         
-        product_left = [8] * len(nums)
+        product_left = [0] * len(nums)
         product_left[0] = 1
         for i  in range(1, len(nums)):
             product_left[i] = product_left[i-1] * nums[i-1]
