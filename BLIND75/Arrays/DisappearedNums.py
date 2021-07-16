@@ -5,7 +5,7 @@ NOTE:
 notice that the indices of the array
 match the values of the array, if no disappearance (off by 1)
 
-Intuition:
+Approach 1: MARKING values at indices
 - Option 1: Use a set to keep track of which numbers have been seen
 - Option 2: markup the original array in order to do in O(1) space
     1. Mark the indices of seen numbers as NEGATIVE.  

@@ -1,5 +1,5 @@
 """
-Intuition:
+Approach 1: Hash set
 - we want to check if we have seen something before, O(1) access using HASH MAP
 - we create a set from list, which remove duplicates
     - if duplicates: set length differs from array length
@@ -15,7 +15,7 @@ class Solution1:
         return len(seen) != len(nums)
 
 """
-Solution 2:  sort first
+Solution 2:  Sort
 Time: O(n log n),  space:O(1)
 - sort
 - iterate thru array, duplicates will be next to each other

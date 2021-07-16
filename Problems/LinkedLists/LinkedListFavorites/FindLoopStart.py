@@ -5,23 +5,28 @@ Intuition:
     - Use Floyd's cycle detection
     NOTE: While loop can break if 1. Fast reaches end OR 2. cycle is found
 
-M = Distance to cycle entry (E)
-K = Distance covered within cycle before meeting point (X)
-L = length of cycle
-n = number of cycles
+h = distance from head to cycle entry (E)
+d = distance from cycle entry (E) to intersection point (X) 
+L = length of cycle loop
+                  _____
+                 /     \
+head -----h---- E       \(d)
+                \       /
+                 X_____/
 
 NOTE:
-Fast and slow meet at  M + K = 2(M + K) - nL
-* We subtract integer multiples of cycle length to get fast to same spot in cycle as slow
-Simplify to: M + K = nL
+Slow has travelled h distance to loop, and d distance inside loop
+Fast has travelled twice the distance as slow, with nL nodes extra
 
-E --k--> X --M-->  E
+Fast and slow meet at  h + d  = 2h + 2d  -  nL
 
-Fast has progressed K distance into the loop from the entry point. If Fast covers M more distance,
-then Fast has covered M + K, which is n WHOLE CIRCLES FROM ENTRY POINT.
+Simplify to: h + d = nL
+    - h + d makes full loop. 
+    - Slow has already travelled d distance into loop. If we increment by h, we get full loop.
+
 
 Set slow to beginning. Set rate of Fast to same as slow.
-We know slow AND fast are M distance from entry. When slow == fast, that is the entry node.
+We know slow AND fast are h distance from entry. When slow == fast, that is the entry node.
 
 Time: O(N) to find cycle, less than O(n) to go M steps
 Space: O(1)
@@ -43,7 +48,7 @@ class Solution:
             if fast == slow:
                 break
 
-        # If we broke while loop because we hit end of list
+        # TODO: If we broke while loop because we hit end of list
         if fast is None or fast.next is None:
             return None
 

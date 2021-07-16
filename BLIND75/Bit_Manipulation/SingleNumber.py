@@ -1,5 +1,9 @@
 
 """ 
+NOTE: WHY BIT??
+    1. looking for a single number
+    2. Values are limited to range of indices, so we can match and cancel
+
 Approach Bit Manipulation
 - each number in list has a duplicate EXCEPT one
 
@@ -16,8 +20,8 @@ class Solution:
         # go thru each number and XOR to running XOR result
         # duplicates will transitively cancel, the single number will remain
         single = 0
-                """ This is  single  =  num1 xor num2 xor num3 """
-
+        
+        """ This is  single = num1 xor num2 xor num3 xor num4 ... """
         for num in nums:
             single = single ^ num
         return single

@@ -3,27 +3,40 @@ import unittest
 from copy import deepcopy
 
 
-def rotate_matrix(matrix):
-    """rotates a matrix 90 degrees clockwise"""
-    n = len(matrix)
-    for layer in range(n // 2):
-        first, last = layer, n - layer - 1
-        for i in range(first, last):
-            # save top
-            top = matrix[layer][i]
+"""
+Intuition:
+    - notice that the output after rotate, that the rows are now columns
+    - we can transpose (but the columns will be out of order)
+    --> loop thru each row and reverse so that the columns will be in order
 
-            # left -> top
-            matrix[layer][i] = matrix[-i - 1][layer]
+"""
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        def reverse(A):
+            l = 0
+            r = len(A) - 1
+            while l < r:
+                A[l], A[r] = A[r], A[l]
+                # Update ptrs
+                l += 1
+                r -= 1
+        
+        # 1. Transpose matrix 
+        # NOTE: this is nxn square so we can do in place
+        N = len(matrix)
 
-            # bottom -> left
-            matrix[-i - 1][layer] = matrix[-layer - 1][-i - 1]
-
-            # right -> bottom
-            matrix[-layer - 1][-i - 1] = matrix[i][-layer - 1]
-
-            # top -> right
-            matrix[i][-layer - 1] = top
-    return matrix
+        for r in range(N):
+            for c in range(r, N):       # we start at c = r, on the diagonal
+                matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
+                    
+        # 2. Go thru each row and reverse
+        R = len(matrix)
+        for r in range(R):
+            reverse(matrix[r])
+        
 
 
 def rotate_matrix_pythonic(matrix):

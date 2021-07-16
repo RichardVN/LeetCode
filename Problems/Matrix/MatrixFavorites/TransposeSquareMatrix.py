@@ -11,7 +11,7 @@ Space: O(1)
 def transpose_matrix(matrix):
     N = len(matrix)
     for i in range(N):
-        # TODO: start at column i, or else we just end up with original array
+        # TODO: j starts at i, on the diagonal where j == i,   so we don't end up swapping back to original
         for j in range(i, N):
             matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 

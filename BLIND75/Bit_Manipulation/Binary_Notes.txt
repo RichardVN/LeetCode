@@ -14,3 +14,14 @@ Print Binary string of integer x:
 |   OR 
 ^   XOR 
 ~   NOT
+
+- a XOR 0  = a
+- a XOR a  = 0
+- a XOR b XOR a   equivalent to   a XOR a XOR b  (transitive)
+
+
+Helpful for problems:
+- ONE missing or ONE duplicate 
+- values limited in range
+
+Not helpful for MULTIPLE duplicates of one number
