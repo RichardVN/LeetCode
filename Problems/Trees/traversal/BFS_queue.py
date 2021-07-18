@@ -24,6 +24,8 @@ class Solution:
             # wrap the pop and appending in a for loop over level_size
             for _ in range(level_size):
                 node = q.popleft()
+
+                # Process node, do something with it
                 level.append(node.val)
                 
                 if node.left:     

@@ -1,9 +1,27 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+"""
+NOTE: similar to SameTree except we compare different childs of root1 root2
+
+Recursive Solution:
+    - Base Case: Consider Two None (True), One None (False), Non-Non Dif Val (False)
+    - Minimal Recursive Case:  Two Non-None nodes with none children, Outers mirrored / inner mirrored
+    - Higher Recursive Case: Two Non-None nodes with Non-none children, outer / inner subtrees mirrored
+    
+"""
+class Solution1:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        if not root: return True
+        return self.is_mirror(root.left, root.right)
+    def is_mirror(self, left, right):
+        # TODO: because we have no handling of None base case, need to consider left or right child none cases
+        if left is None and right is None:
+            return True
+        if left is None or right is None:
+            return False
+        if left.val != right.val:
+            return False
+        return self.is_mirror(left.left, right.right) and self.is_mirror(left.right, right.left)
+
+
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
         s_left = [root.left]

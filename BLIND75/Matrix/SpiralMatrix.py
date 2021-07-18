@@ -10,6 +10,7 @@ When we traverse in a "spiral" we
     1. add elements along ONE SIDE of the frame, 
     2. adjust that side of the frame (decrement by one), so we exclude the values we just read
     NOTE: We need additional IF checks for bottom_row and left_col to ensure that we are still within valid bounds
+                --> it is possible that left and right are still valid even tho top and bottom arent
 
 Time: O(N), where N is all of matrix elements
 Space: O(N) including the returned list, O(1) if not including list
