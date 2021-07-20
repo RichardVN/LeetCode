@@ -1,11 +1,12 @@
 """
 Recursive DFS approach:
     - What is the longest path/diameter thru a node?
-        - Left depth + right depth
+        - NOTE: Left depth + right depth
     - How do we get depths?
         - Postorder dfs traversal
+    NOTE:
     - how do return longest diameter inside dfs_depth method?
-        - global variable diameter, updated within method
+        - global variable diameter, updated within method max(self.diameter, left_depth + right_depth)
 
     
 """

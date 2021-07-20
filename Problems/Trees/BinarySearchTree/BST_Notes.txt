@@ -1,0 +1,3 @@
+Guarantee:
+    - For any node in BST, node.left will be less, node.right will be greater
+    - INORDER: traversal of BST leads to values in ascending order 

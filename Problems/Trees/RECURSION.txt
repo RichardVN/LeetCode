@@ -1,0 +1,71 @@
+def main(root):
+    # IMPORTANT. NEED TO CONSIDER EMPTY TREE CASE IN MAIN
+    if not root:
+        return None 
+    answer = dfs(root)
+    return answer 
+
+dfs(root):
+    # base case. Must provide correct answer for None tree !!
+    if not root:
+        return False 
+    
+    # recursive case.  Must provide correct answer for Single Node Tree !!
+    # 1. Handle Current Node 
+    # 2. Recursively call function on Child Nodes to return answer for left and right subtree
+    # 3. Use return values from child nodes and Current Node processing 
+            a. Update global variable, OR 
+            b. return an answer upwards the tree
+
+RECURSION KEY NOTES: 
+    - Generally we call recursive function on ROOT:
+    - We make successive recursive call on children DOWN the tree, until we reach smallest base case 
+        ex. left_depth = dfs_depth(root.left)
+        ex. left_p_found = dfs_LCA(root.left)
+    - The base case returns UP the tree, for bigger and bigger subproblems until main problem returns .
+        ex. if not root return None
+        ex. if not root return False
+    - Recursive Case: 
+        1. Process current Node, such that it works for single Node
+        2. Recursive call on all Children
+        3. Return answer UPWARD, based on return from children
+
+- Q:  What answer are we trying to Return from recursive function?
+    ex. "Maximum depth of tree with root at Current"
+    --> Make sure BASE CASE answers this question for NONE node and SINGLE node and
+    --> Make sure what we "return Up" the tree is of same return type as answer node
+- Q:  What if we are looking for answer that occurs on some condition ANYWHERE in tree (NOT in complete return)?
+    ex. Lowest common ancestor if p and q found 
+    --> use a GLOBAL variable in the main shell function that calls recursive function. Update on conditions met
+    --> Use If result is NONE check to update on first solution bottom up
+- Q:  When to use global variable vs. Return from a dfs_function  
+    - DFS function:  returns an answer about an entire subtree (ex. depth, contains, same, etc. )
+            -> answer of subtree problems can be used to solve greater tree problem
+                ex. the sum of tree is the sum of left_subtree + right_subtree + current.val 
+                ex. IsMirror of tree is  isMirror (left_subtree)  AND  isMirror (right_subtree)
+                ex. MaxDepth = max(left_depth, right_depth) + 1
+                ex. MaxPathSumToLeaf = max(left_path, right_path) + root.val
+    - Global:  returns an answer that is true only at a STATE of a recursive call (LCA, diameter at particular node)
+            -> the recursive answer of subproblems cant be used to solve answer of bigger problem:
+                ex. the diamter of tree root is NOT diameter of left_subtree and right_subtree
+                ex. the max_path_sum of node does NOT have to go thru root. Is NOT max of left_sum, right_sum 
+
+TRAVERSAL NOTES:
+
+- BFS iterative: 
+    - Option 1:  only append Value Nodes --> Check if children arent None before append
+    - Option 2:  append none nodes too --> Check if we popped Non-None node before appending children
+- DFS recursion: 
+    - Base Case: 
+        - Option 1: Base case Is None 
+            - If not Root: 
+            - Else (recursive case)
+        - Option 2: base case is leaf
+            - If not root.left and not root.right:
+            - if not root.left: 
+            - if not root.right:
+            - Else (recursive case)
+
+- Preorder :  Root GUARANTEED front, then left partition, right partition 
+- Postorder:  Left partition , right partition, Root
+- Inorder:  at any element, values to left are left subtree, values to right are right subtree

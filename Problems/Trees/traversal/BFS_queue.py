@@ -1,5 +1,15 @@
 """
 https://leetcode.com/problems/binary-tree-level-order-traversal/submissions/
+
+
+NOTE: 
+    - While we are traversing we can decide whether to add None nodes to queue
+    - Option 1:  Only add value nodes to queue
+        - pop queue. we know it is value node
+        - check if child isnt None before appending
+    - Option 2:  We can add None nodes to queue
+        - Pop queue. It might be none, and we cant access child of none
+        - IF not None, append left and right child (might be None)
 """
 from collections import deque
 class Solution:

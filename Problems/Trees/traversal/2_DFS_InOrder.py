@@ -24,7 +24,20 @@ class Solution1:
             vals.append(root.val)
             self.dfs(root.right, vals)
 
-# iterative
+"""
+Iterative approach
+
+KEY: Have stack to keep track nodes to process, and root ptr to traverse tree
+
+Procedure:
+    - initialize empty stack
+    - if root:
+        - push node at root to stack
+        - root is now root.left  (go down left)
+    - else: (go thru stack)
+        - pop stack and process Node
+        - set root to Node.right
+"""
 class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         ans = []

@@ -1,0 +1,48 @@
+https://courses.cs.washington.edu/courses/cse326/03wi/lectures/RaoLect20.pdf
+
+Algorithm Use Cases: 
+
+We can summarize this as below-
+1) One source and One Destination
+    - Use A* Search Algorithm (For Unweighted as well as Weighted Graphs)
+2) One Source, All Destination 
+    - Use BFS (For Unweighted Graphs)
+    - Use Dijkstra (For Weighted Graphs without negative weights)
+    - Use Bellman Ford (For Weighted Graphs with negative weights)
+3) Between every pair of nodes
+    - Floyd-Warshall
+    - Johnson’s Algorithm
+
+Graph Representations (worksheet 40)
+- 1.Adjacency Matrix
+	- 2D array
+	- 1 at (2,3) indicates edge between city 2 and city 3
+	- *Weighted: replace 1 with actual value
+- 2.Edge List
+	ex. Pendleton: {Pueblo, Phoenix}
+		Node         Neighbors
+	- stores only edges, more efficient for sparse graph w/ few connections
+	-* weighted pairs
+	ex. Pendleton: {(Pueblo,10),(Phoenix,15)}
+
+
+Find Reachable (worksheet 41)
+******************
+findReachable (graph g, vertex start) {
+create a set of reachable vertices, initially empty. call this r.
+create a container for vertices known to be reachable. call this c
+add start vertex to container c
+while the container c is not empty {
+ 	remove first entry from the container c, assign to v
+	if v is not already in the set of reachable vertices r 
+	{
+		add v to the reachable set r
+		add the neighbors of v to the container c *if they are not already reachable
+ 	}
+}
+return r
+} 
+*** 
+Container c types: 
+stack: Depth first Search
+queue: Breadth-first Search
