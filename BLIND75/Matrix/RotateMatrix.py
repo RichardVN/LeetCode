@@ -1,11 +1,14 @@
 """
-Intuition:
+NOTE:  inner for loop of transpose, starts at row index
+        make sure to increment left and right pointers of reverse after swap
+
+Intuition:  Transpose, then reverse each row
     - notice that the output after rotate, that the rows are now columns
     - we can transpose (but the columns will be out of order)
     --> loop thru each row and reverse so that the columns will be in order
 
-Time: O(N) to transpose, O(N) to reverse
-space: O(1) transpose and reverse done via swapping in place
+Time: O(N)
+Space: O(1)
 """
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:

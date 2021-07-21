@@ -26,24 +26,25 @@ How to use:
             We are NOT looping through N elements for each iteration of j using while loop
             Because a window size of 0 is always valid
 
-Minimum Window:
+Minimum Window: R - Tries to expand back until a valid answer    L - Tries to greedily shrink until invalid
     1. Initialize the max/min value we are trying to optimize for (optional if we just need BIGGEST window size)
     2. Initialize the constraint of elements WITHIN window (e.g. maximum zeroes, minimum sum of window)
-    3.. For loop in which we increment fast pointer through data structure (expand window)
-        a. depending on the value at window_end j, we update the constraint variable
-        b. While we have met the constraint that makes window VALID, increment i until INVALID
-            i.) Record optimized value
+    3.. For loop in which we increment fast pointer (expand until valid)
+        a. Update constraint variable based on j
+        b. WHILE we have met constraints that makes window VALID
+            i.)  !! We are valid. Update answer if better
             ii.) ** Update constraint variable from value we remove from window BEFORE increment i
-            iii.) Keep moving window_start i (until break constraint, and we move to next j)
+            iii.) increment i pointer
     4. return optimized value
 
-Maximum window:
+Maximum window:  R - Tries to expand greedily until invalid.   L - Tries to shrink until valid
     NOTE: if we have a variable to keep track max window size (instead of maintaining the window size of answer)
           Then we can have a while loop that increments until the constraint is met, similar to above. And update best if valid
     1. Initialize the constraint variable of the window
-    2. For loop in which we increment fast pointer
+    2. For loop in which we increment fast pointer  (expand until invalid)
         a. Update constraint variable based on j
-        b. If we have met constraint that makes window INVALID, increment i until VALID and we can expand w/o update i
+        b. WHILE we have met constraint that makes window INVALID
             i.) ** Update the constraint of value we remove from window before increment i 
-            ii.) move i to maintain size of the previous valid window
-    3. return size of window
+            ii.) increment i pointer 
+        c. !! we are valid again. Update answer if better
+    3. return optimized answer

@@ -16,16 +16,19 @@ class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         answer = [0] * len(nums)
         
+        # build product to left of i
         product_left = [0] * len(nums)
         product_left[0] = 1
         for i  in range(1, len(nums)):
             product_left[i] = product_left[i-1] * nums[i-1]
 
+        # build product to right of i
         product_right = [0] * len(nums)
         product_right[-1] = 1
         for i in range(len(nums) - 2, -1, -1):
             product_right[i] = product_right[i+1] * nums[i+1]
         
+        # for any element. product except self is product to left * product to right
         for i in range(len(nums)):
             answer[i] = product_left[i] * product_right[i]
             
