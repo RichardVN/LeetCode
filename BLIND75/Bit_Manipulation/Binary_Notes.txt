@@ -1,4 +1,4 @@
-Bit operators are
+Time: O(1), guarantee 32 bits
 
 Convert Decimal to Binary:
 - Divide by 2 until reach 0, keep track of remainders 
@@ -10,6 +10,9 @@ Convert Binary to Decimal:
 Print Binary string of integer x:
     print(bin(x))
 
+Shift all bits to the right (remove least significant):
+-  num >>= 1
+
 &   AND
 |   OR 
 ^   XOR 
@@ -19,8 +22,17 @@ Print Binary string of integer x:
 - a XOR a  = 0
 - a XOR b XOR a   equivalent to   a XOR a XOR b  (transitive)
 
+Cancel out two duplicates:
+- a XOR a = 0
 
-Helpful for problems:
+Remove least significant 1, keeping other bits the same:
+- num = num & (num - 1)
+
+Get least significant bit w/ bitMask:
+- num AND 1
+- num OR 0
+
+Helpful for array problems:
 - ONE missing or ONE duplicate 
 - values limited in range
 
