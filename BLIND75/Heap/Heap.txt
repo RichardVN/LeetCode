@@ -1,0 +1,22 @@
+MinHeap:  Value at any node will be greater than value of left and right child nodes 
+
+Array representation:  
+    - Left child is at 2i + 1, right is at 2i + 2
+    - Parent is at (i-1) // 2
+
+Operations Complexities:  
+    - Add:  O(log n)
+            - add node to end of tree is O(1), then we have to sift up the height of tree O(log n)
+    - Delete: O(log n) 
+            - swap node_to_delete with leaf node. 
+            - Remove the node_to_delete 
+            - Sift up or sift down the swapped leaf node
+    - Peek Top:  O(1)
+    - Build Min Heap: O(N)   ... 0 * n/2 + 1 * n/4 ....  sum of (depth * nodes_at_level)
+    - Sort Min Heap: O(n log n)
+    - K smallest:   O(N log K)
+        - heap of K size is created. push pop  log(K)
+        - Heapify is called f
+
+
+PYTHON implementation

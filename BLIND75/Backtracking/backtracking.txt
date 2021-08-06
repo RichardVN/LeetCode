@@ -1,0 +1,34 @@
+
+https://leetcode.com/problems/subsets/discuss/973667/backtracking-template-explanation-visual-python
+
+def dfs( parameter ):
+
+	if stop condtion or base case:
+		# base case:
+		update result
+	    return
+	
+	else:
+		# general cases:
+		for all possible next moves:
+		
+		    select one next move
+			dfs( paramter with selected next move )
+			undo the selection
+	
+
+
+# general structure 
+Recursive_function(start, current)
+    - Start:  the start idx of possible candidates 
+    - Current:  the candidates chosen so far 
+
+    Base Case: 
+    - length of current = length of target 
+    - current sum = target sum 
+
+    Recursive Case: 
+    - Loop over each candidate 
+    - Recursive call with candidate added to current set, start + 1
+
+
