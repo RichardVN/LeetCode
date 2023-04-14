@@ -3,7 +3,7 @@ COMMON MISTAKES
 
 General:
     - using = instead of ==
-    - need to check if key in dictionary, before incrementing d[key]
+    - need to check if key in dictionary, before changing value of d[key]
     - When using a loop, you must iterate over an ITERABLE.  such as Range(int)
     - Unpack operator goes BEFORE iterable  ex.  *my_list
     - Do not use KEYWORDS as var namex. ex. str, list, dict, set, next, OPEN

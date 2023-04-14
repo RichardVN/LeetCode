@@ -14,11 +14,11 @@ pointer B hits intersection after   B + C + A    nodes
 
 Intuition:
     If we increment one node at a time, they will eventually hit an intersection, IF they can jump lists
-    If there is NO intersection. Then they will meet at NONE "node" after a + b steps (transverse both lists)
+    If there is NO intersection. Then they will meet at NONE "node" after a + b steps (traverse both lists)
 
 NOTE: we have to let the pointers on to the None "node" before switching lists.
 
-Time: O(a+b) if we transverse both lists entirely
+Time: O(a+b) if we traverse both lists entirely
 Space: O(1)
 
 """

@@ -2,8 +2,9 @@
 # https://leetcode.com/problems/linked-list-cycle-ii/
 """
 Intuition:
-    - Use Floyd's cycle detection
-    NOTE: While loop can break if 1. Fast reaches end OR 2. cycle is found
+    - 1. Use Floyd's cycle detection
+    NOTE: While loop can break if 1. Fast reaches end (no cycle) OR 2. cycle is found
+    - 2. Move Slow to beginning. Walk both pointers one node at a time
 
 h = distance from head to cycle entry (E)
 d = distance from cycle entry (E) to intersection point (X) 
@@ -11,24 +12,26 @@ L = length of cycle loop
                   _____
                  /     \
 head -----h---- E       \(d)
-                \       /
+             (t)\       /
                  X_____/
 
 NOTE:
-Slow has travelled h distance to loop, and d distance inside loop
-Fast has travelled twice the distance as slow, with nL nodes extra
+Slow has travelled h distance to loop, and d distance inside loop   ->   h + d 
+Fast has travelled twice the distance as slow, with nL nodes extra  ->   h + d + t + d  + nL  ... Disregard nL since it leads to same spot
 
-Fast and slow meet at  h + d  = 2h + 2d  -  nL
+2 * Slow = Fast
+Fast and slow meet at  2(h + d)  = h + d + t + d 
+                        h + d = t + d
+                        h = t
 
-Simplify to: h + d = nL
-    - h + d makes full loop. 
-    - Slow has already travelled d distance into loop. If we increment by h, we get full loop.
+Distance beginning to X is same as X to loop entry
+    - move slow to beginning and walk pointers one node at a time to find the intersection
 
 
 Set slow to beginning. Set rate of Fast to same as slow.
 We know slow AND fast are h distance from entry. When slow == fast, that is the entry node.
 
-Time: O(N) to find cycle, less than O(n) to go M steps
+Time: O(N) to find cycle, less than O(n) to go h steps
 Space: O(1)
 """
 

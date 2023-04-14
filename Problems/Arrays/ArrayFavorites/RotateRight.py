@@ -1,9 +1,12 @@
 """
-NOTE: A subarray from back of array can be moved to the front, WITHOUT array needing to be sorted - 
+https://leetcode.com/problems/rotate-array/description/
+
+Key Takeaway: A subarray from back of array can be moved to the front, WITHOUT array needing to be sorted - 
         by using in-place reverses
 
-Intuition:
+Pseudo:
     - modulo k so that it is within N
+    - make a reverse_subarray helper function
     - Move last k nodes to front using 3 reverses
         1. reverse entire array
         2. reverse first k elements in array

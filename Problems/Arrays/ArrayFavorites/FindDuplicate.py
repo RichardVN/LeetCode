@@ -7,6 +7,8 @@ The number that is duplicated may be duplicated MANY times
 
 """
 Optimal Approach:  cycle detection
+Node = Index
+Value = Value at Index
 
 NOTE: 
     - 0 is not in nums, because there is another duplicated number

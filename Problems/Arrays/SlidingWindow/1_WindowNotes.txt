@@ -26,15 +26,15 @@ How to use:
             We are NOT looping through N elements for each iteration of j using while loop
             Because a window size of 0 is always valid
 
-Minimum Window: R - Tries to expand back until a valid answer    L - Tries to greedily shrink until invalid
+Minimum Window: R - Tries to expand until a valid answer    L - Tries to greedily shrink until invalid
     1. Initialize the max/min value we are trying to optimize for (optional if we just need BIGGEST window size)
     2. Initialize the constraint of elements WITHIN window (e.g. maximum zeroes, minimum sum of window)
     3.. For loop in which we increment fast pointer (expand until valid)
-        a. Update constraint variable based on j
+        a. Update constraint variable based on r
         b. WHILE we have met constraints that makes window VALID
             i.)  !! We are valid. Update answer if better
-            ii.) ** Update constraint variable from value we remove from window BEFORE increment i
-            iii.) increment i pointer
+            ii.) ** Update constraint variable from value we remove from window BEFORE increment l
+            iii.) increment l pointer
     4. return optimized value
 
 Maximum window:  R - Tries to expand greedily until invalid.   L - Tries to shrink until valid
@@ -42,9 +42,9 @@ Maximum window:  R - Tries to expand greedily until invalid.   L - Tries to shri
           Then we can have a while loop that increments until the constraint is met, similar to above. And update best if valid
     1. Initialize the constraint variable of the window
     2. For loop in which we increment fast pointer  (expand until invalid)
-        a. Update constraint variable based on j
+        a. Update constraint variable based on r
         b. WHILE we have met constraint that makes window INVALID
-            i.) ** Update the constraint of value we remove from window before increment i 
-            ii.) increment i pointer 
+            i.) ** Update the constraint of value we remove from window before increment l 
+            ii.) increment l pointer 
         c. !! we are valid again. Update answer if better
     3. return optimized answer

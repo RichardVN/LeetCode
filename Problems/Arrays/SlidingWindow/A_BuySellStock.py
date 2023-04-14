@@ -20,13 +20,43 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         if not prices:
             return 0
-        lowest = prices[0]
+        lowest_seen = prices[0]
         max_profit = 0
 
         # we don't need to modify, or access indices
         for price in prices:
-            lowest = min(lowest, price)
-            profit = price - lowest
+            lowest_seen = min(lowest_seen, price)
+            profit = price - lowest_seen
             max_profit = max(profit, max_profit)
 
         return max_profit
+
+
+"""
+Sliding Window approach
+NOTE: once we encounter a new minimum, that is optimal day to buy from then on, adjust left pointer
+
+Intuition:
+    - Iterate through array with R (sell)
+    - If we see a new minimum, set L (buy) to current
+    - If not minimum, try to sell and see if it's a higher profit
+"""
+class Solution:
+    def maxProfit2(self, prices: List[int]) -> int:
+        l = 0
+        r = 0
+
+        max_profit = 0
+        lowest_seen = float(inf)
+
+        while r < len(prices):
+            if prices[r] < lowest_seen:
+                lowest_seen = prices[r]
+                l = r
+            else:
+                profit = prices[r] - prices[l]
+                max_profit = max(max_profit, profit)
+            r += 1
+        
+        return max_profit
+            
