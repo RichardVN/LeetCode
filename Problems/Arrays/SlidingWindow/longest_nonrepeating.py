@@ -1,19 +1,17 @@
 # https://leetcode.com/problems/longest-substring-without-repeating-characters/submissions/
 """
-sliding window
-1.  Sequential elements data struct (LL, array, string)
-2. looking for contiguous subsection
-3. subsection has a constraint
-4. we optimize something about subsection (running max/min)
+Why window?
+- substring, continuous
+- constraint: no repeats
+- optimize: longest
 
 
 procedure
-- initialize l and r ptrs
-- have variable res to keep track of current best result
-- LOOP r over string
-    - take into account r value for constraint
-    - if valid, update res
-    - if not valid, move begginning of window, L until valid
+- initialize l and r ptrs, longest substring
+- for loop, expand R greedily
+    - check constraint
+    - while invalid, shrink with L
+    - valid again. update answer
 """
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:

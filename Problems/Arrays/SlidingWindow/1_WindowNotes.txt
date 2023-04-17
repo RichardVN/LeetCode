@@ -9,7 +9,7 @@ Examples:
 When to use:
     - 1. Data structure of sequential elements (string, array, linked list)
     - 2. We are looking for a CONTIGUOUS subsection
-    - 3. We have a WINDOW CONSTRAINT of elements within window for window to be valid
+    - 3. We have a WINDOW CONSTRAINT that we check makes window invalid or valid
     - 4. We are trying to OPTIMIZE a value (keep running max/min)
         1. Get the smallest or largest window size (i-j+1)
         2. Some other value that we calculate at each window and keep running min/max of, e.g. max profit
@@ -26,25 +26,30 @@ How to use:
             We are NOT looping through N elements for each iteration of j using while loop
             Because a window size of 0 is always valid
 
-Minimum Window: R - Tries to expand until a valid answer    L - Tries to greedily shrink until invalid
+WHILE LOOP = SHRINK
+
+Minimum Window: R - Tries to expand until a valid answer    L - Tries to greedily shrink until invalid (while)
+    ** We start as invalid
     1. Initialize the max/min value we are trying to optimize for (optional if we just need BIGGEST window size)
     2. Initialize the constraint of elements WITHIN window (e.g. maximum zeroes, minimum sum of window)
     3.. For loop in which we increment fast pointer (expand until valid)
-        a. Update constraint variable based on r
-        b. WHILE we have met constraints that makes window VALID
-            i.)  !! We are valid. Update answer if better
+        a. Update constraint variable based on r that is added to window
+        b. WHILE VALID constraint conditions, shrink
+            i.)  !! We are valid. UPDATE ANSWER if better
             ii.) ** Update constraint variable from value we remove from window BEFORE increment l
             iii.) increment l pointer
     4. return optimized value
 
-Maximum window:  R - Tries to expand greedily until invalid.   L - Tries to shrink until valid
+Maximum window:  R - Tries to expand greedily until invalid.   L - Tries to shrink until valid (while)
     NOTE: if we have a variable to keep track max window size (instead of maintaining the window size of answer)
           Then we can have a while loop that increments until the constraint is met, similar to above. And update best if valid
-    1. Initialize the constraint variable of the window
-    2. For loop in which we increment fast pointer  (expand until invalid)
-        a. Update constraint variable based on r
-        b. WHILE we have met constraint that makes window INVALID
-            i.) ** Update the constraint of value we remove from window before increment l 
+    ** We start as valid
+    1. Initialize the max/min value we are trying to optimize for (optional if we just need BIGGEST window size)
+    2. Initialize the constraint of elements WITHIN window (e.g. maximum zeroes, minimum sum of window)
+    3. For loop in which we increment fast pointer  (expand until invalid)
+        a. Update constraint variable based on r that is added to window
+        b. WHILE INVALID constraint conditions, shrink
+            i.) ** Update the constraint of value we remove from window BEFORE increment l 
             ii.) increment l pointer 
-        c. !! we are valid again. Update answer if better
-    3. return optimized answer
+        c. !! we are valid again. UPDATE ANSWER if better
+    4. return optimized answer

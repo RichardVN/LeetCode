@@ -1,47 +1,32 @@
 # https://leetcode.com/problems/squares-of-a-sorted-array/
 
 """
-NOTE: 
-    - Original Array is SORTED, make use of this!
-    - Key thing to notice is that the values from left decrease until 0, and then values to right increase from 0
-    the further from zero, the higher the square
+SORTED: think of 2 pointer
 
-"""
-"""
-SOLUTION 1 - use deque to append values to left in O(1). So we append biggest, and then smaller values to left of that.
-from collections import deque
-Intuition:
-    - We know that the biggest values are at the ENDS --> we can convert to a deque and access ends in O(1)
-    - Two pointer method
-        NOTE: We use <= comparison, to ensure that ALL values are added
-        - Take vals at the ends, and compare
-        - append the bigger value to the answer list
-
-Time: O(n), no nested loops.
-Space: O(n), we have to make an array to hold answer, size of N
+SOLUTION - 2 pointer method
+intuition:
+    - the biggest magnitudes are at the end
+    - get array from largest to smallest, then reverse
+Time: O(n)
+Space: O(n) for answer array
 """
 class Solution:
-    def sortedSquares(self, nums):
-        answer = []
-        left = 0
-        right = len(nums) - 1
-        while left <= right:                            # left == right if both are at value 0
-            if abs(nums[left]) >= abs(nums[right]):
-                answer.append(nums[left]*nums[left])
-                left += 1
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        l = 0
+        r = len(nums) - 1
+
+        res = []
+        while l <= r:
+            if nums[l]**2 > nums[r]**2:
+                res.append(nums[l]**2)
+                l += 1
             else:
-                answer.append(nums[right]*nums[right])
-                right -= 1
-        # now we have answer list in decreasing order. We can in-place reverse in O(N) time
-        answer.reverse()
-        return answer
+                res.append(nums[r]**2)
+                r -= 1
+        # array is now largest to smallest
+        res.reverse()
 
-
-solution = Solution()
-test_arr = [-5, -3, -1, 0, 2, 8]
-squares = solution.sortedSquares(test_arr)
-print(squares)
-
+        return res
 
 
 """

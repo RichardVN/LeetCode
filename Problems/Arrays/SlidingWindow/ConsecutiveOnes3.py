@@ -1,27 +1,32 @@
-# NOTE: The window size represents the longest length subarray that AT ONE POINT was valid
-# Same as consecutive ones II
-# use for loop instead of while loop
-    # NOTE: key difference is that the iterator in for loop only makes it to last index N-1, and never becomes N
-            # In a while loop, iterator becomes N, the value that breaks the condition
+"""
+Why Sliding Window?:
+- Contiguous subarray
+- OPTIMIZE:  maximize consecutive 1's
+- CONSTRAINT for validity:  flipped_zeroes <= 3
+
+Pseudo:
+- for loop traversal with j
+    - update constraint based on j new position
+    - if invalid, shrink window until valid
+    - update optimization with now valid window
+
+    # Same as consecutive ones II
+
+"""
 class Solution:
-    def longestOnes(self, A: List[int], K: int) -> int:
-        zeroes = 0
-        j = 0
+    def longestOnes(self, nums: List[int], k: int) -> int:
         i = 0
-
-        # i will end on the final index of list
-        for i in range(len(A)):
-            if A[i] == 0:
-                zeroes += 1
-
-            # expand window without shifting start
-            if zeroes <= K:
-                continue
-            # invalid window, must shift start until zeroes valid again
-            else:
-                j += 1
-                # if we 'removed' a zero
-                if A[j - 1] == 0:
-                    zeroes -= 1
-        print(len(A), i, j)
-        return i-j + 1
+        flipped = 0
+        longest = 0 
+        for j in range(len(nums)):
+            # update constraint
+            if nums[j] == 0:
+                flipped += 1
+            # shrink Invalid until valid
+            while flipped > k:
+                i += 1
+                if nums[i-1] == 0:
+                    flipped -= 1
+            # valid
+            longest = max(longest, j-i +1)
+        return longest
