@@ -1,4 +1,5 @@
 """
+https://leetcode.com/problems/reverse-string/description/
 NOTE: in even num array, we have to make sure to swap mid (left middle) with right middle
 Pythonic solution using complements
 Intuition:
@@ -7,7 +8,7 @@ Steps:
     1. find middle index
     2. Loop until middle idx (inclusive)
         a. swap element at i with element at ~i using  python var swap
-Ti
+
 """
 class Solution:
     def reverseString(self, s: List[str]) -> None:
@@ -22,21 +23,19 @@ class Solution:
 
 
 """
-Traditional 2 pointers
 Intuition:
-    - pointer at each end
-    - swap values at pointers and walk pointers in
-    - Not necessary to swap if pointers same spot (this means only a single middle)
+- IN PLACE modification, think of 2 pointers swapping
+- walk inwards with 2 pointers, swap values
 """
 class Solution:
-    def reverseString(self, s: List[str]) -> None:
+    def reverseString2(self, s: List[str]) -> None:
         """
         Do not return anything, modify s in-place instead.
         """
-        left = 0
-        right = len(s) - 1
-        # note if left ever equal right, that means we have odd num N, with single middle
-        while left < right:
-            s[left], s[right] = s[right], s[left]
-            left += 1
-            right -= 1
+        l = 0
+        r = len(s) - 1
+
+        while l < r:
+            s[l], s[r] = s[r], s[l]
+            l += 1
+            r -= 1

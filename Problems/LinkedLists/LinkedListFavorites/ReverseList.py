@@ -1,9 +1,10 @@
 # https://leetcode.com/problems/reverse-linked-list/
 """
-Time: O(N) to transverse list
+Time: O(N) to traverse list
 Space: O(1) only pointers
 
-NOTE: Triple pointer method. Before, current, after. Set after to current.next as FIRST step in while loop
+NOTE: Triple pointer method. Before, current, after. 
+    - Set after to current.next as FIRST step in while loop
 
 Intuition:
     1. Initialize three pointers. 
@@ -25,12 +26,12 @@ class Solution:
         curr = head
 
         while curr:
-            # on last iteration, after will be None
+            # TODO: set after here
             after = curr.next
             # reverse the next "arrow"
             curr.next = before
             # move before up a node, move current up a node (DONT USE NEXT)
             before = curr
             curr = after
-
+        # curr ends on NONE so return before
         return before
