@@ -37,9 +37,6 @@ Space: O(1)
 
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
-        if not head:
-            return None
-
         # is there a cycle?
         slow = head
         fast = head

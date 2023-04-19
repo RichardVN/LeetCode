@@ -12,18 +12,17 @@ Time complexity:
 """
 
 class Solution:
-    def hasCycle(self, head: ListNode) -> bool:
-        # Empty list
-        if not head:
-            return False
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
         fast = head
         slow = head
-        # Iterate until fast is on tail node or the None after tail
+
+        # Do not enter loop if fast is on tail -- cannot step forward twice
         while fast is not None and fast.next is not None:
-            # slow initially set same as fast. Make sure to increment first
             fast = fast.next.next
             slow = slow.next
-            if slow == fast:
+            # NOTE: if there is a cycle, we need a break condition
+            if fast == slow:
                 return True
+        # fast reached a None --> No cycle
         return False
 
