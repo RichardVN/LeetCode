@@ -1,35 +1,35 @@
-
+# https://leetcode.com/problems/palindrome-linked-list/description/
 """
 Solution 1 
-Intuition: Convert list into deque so we can pop from both ends in constant time. Make sure pops.vals are equal
+Intuition: Convert list array. Walk ptrs in from the ends to mid, ensuring vals are equal
 
 Advantage: Don't mess with original list value
-Time: O(N) copy to deque and pop from deque
-Space: O(N) deque
+Time: O(N) copy to list
+Space: O(N) list
 """
 class Solution:
-    def isPalindrome(self, head: ListNode) -> bool:
-        if not head:
-            return True
-        # append nodes to deque
-        d = deque()
-        current = head
-        # O(N)
-        while current:
-            d.append(current)
-            current = current.next
-        # O(N)
-        while len(d) > 1:
-            left_node = d.popleft()
-            right_node = d.pop()
-            if left_node.val != right_node.val:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        lst = []
+        # transform to list
+        curr = head
+        while curr:
+            lst.append(curr.val)
+            curr = curr.next
+        l = 0
+        r = len(lst) - 1
+
+        # walk pointers in from ends
+        while l < r:
+            if lst[l] != lst[r]:
                 return False
+            l += 1
+            r -= 1
+        
         return True
 
 
 """
-Solution 2 - OPTIMAL
-Problem: We cannot iterate backwards from end like an array (no 'prev')
+Solution 2 - OPTIMAL TIME, but modify input
 Intuition: 
     1. Find midpoint of linked list using fast, slow pointers. It does not matter if we find the left or right mid in even list.
     2. Reverse the second half of linked list from mid onwards.

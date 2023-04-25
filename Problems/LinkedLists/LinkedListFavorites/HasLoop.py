@@ -1,7 +1,8 @@
 # https://leetcode.com/problems/linked-list-cycle/
 """
-Intuiution: Use Floyd's tortoise and hare to find cycle. 
+Intuiution: Fast and slow pointers until fast == slow
     Note that fast either ends on None OR fast.next ends on None, depending on list parity
+    NOTE: Same as find middle of list, but with a break condition
 
 Time complexity:
     - No Cycle: O(N) fast pointer reaches end
