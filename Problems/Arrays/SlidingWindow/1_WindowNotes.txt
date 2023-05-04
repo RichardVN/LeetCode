@@ -21,12 +21,13 @@ How to use:
     - Two pointers. 
         Pointer 1: "fast" pointer that reads through all values of array. Makes step each iteration, such as for loop
         Pointer 2: "slow" pointer that represents the start of the window
-    - NOTE: we often use  j - i + 1, because window is inclusive to pointers
     NOTE: Although we may have a nested "while loop" inside a for loop, in total i and j may only travel N elements each
             We are NOT looping through N elements for each iteration of j using while loop
             Because a window size of 0 is always valid
 
 WHILE LOOP = SHRINK
+
+TODO: we often use  j - i + 1, because window is inclusive to pointers
 
 Minimum Window: R - Tries to expand until a valid answer    L - Tries to greedily shrink until invalid (while)
     ** We start as invalid
@@ -35,7 +36,7 @@ Minimum Window: R - Tries to expand until a valid answer    L - Tries to greedil
     3.. For loop in which we increment fast pointer (expand until valid)
         a. Update constraint variable based on r that is added to window
         b. WHILE VALID constraint conditions, shrink
-            i.)  !! We are valid. UPDATE ANSWER if better
+            i.)  TODO:!! We are valid. UPDATE ANSWER if better
             ii.) ** Update constraint variable from value we remove from window BEFORE increment l
             iii.) increment l pointer
     4. return optimized value
@@ -51,5 +52,5 @@ Maximum window:  R - Tries to expand greedily until invalid.   L - Tries to shri
         b. WHILE INVALID constraint conditions, shrink
             i.) ** Update the constraint of value we remove from window BEFORE increment l 
             ii.) increment l pointer 
-        c. !! we are valid again. UPDATE ANSWER if better
+        c. !! TODO: we are valid again. UPDATE ANSWER if better
     4. return optimized answer

@@ -7,7 +7,7 @@ match the values of the array, if no disappearance (off by 1)
 
 Intuition:
 - Option 1: Use a set to keep track of which numbers have been seen
-- Option 2: markup the original array in order to do in O(1) space
+- Option 2: markup the original array in order to do in O(1) space. If we disgard res
     1. Mark the indices of seen numbers as NEGATIVE.  
         NOTE: Make sure we do not access a negative index. Account for any offset (e.g. index [0, N-1] values [1, N])
         ex. "if we see value of 1, we mark the value at index 0 as negative

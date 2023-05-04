@@ -4,18 +4,18 @@ Intuition:
     - Two Sum II finds two numbers that add to a target ... NOTE: must sort for TwoSumII
     - For each value in array, there must be Two Sum adding to - (value) so that there is
         a triplet summing to 0
-            - NOTE: we want all triplets. do NOT return from 2Sum until left overlap right
+            - NOTE: we want all triplets. we continue incrementing until l and r meet
             - NOTE: upon returning triplet, increment left until it is no longer same value
             
 Algorithm:
     - Main: 
         - NOTE: SORT so we can two sum II
-        - Iterate i through the array. Continue if same value as last index
+        - Iterate i through the array. Skip if same value as last index
         - perform two sum II on subarray [i+1 : to the end]
-    - Helper: 
+    - Helper: Finds 2 Sum for target - nums[i]
         - Create a Two SUM II helper function with two pointers. 
         - If we found a good pair, add the triplet to the result. 
-        - Decrement RIght, Increment left until new.
+        - Decrement RIght, Increment(s) left until new.
 
 
 Time: O(N^2)      O(n log n) sort ... O(N) iterate array -> O(N) 2Sum

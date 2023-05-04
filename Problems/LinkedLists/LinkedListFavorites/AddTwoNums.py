@@ -1,11 +1,11 @@
-# https: // leetcode.com/problems/add-two-numbers/
+# https://leetcode.com/problems/add-two-numbers/
 """
 CATCHES:
-- must consider carry into digit total
+- must consider carry into digit total. And calculate new carry
 - check that the ptr is not at None, before accessing .val and iterating ptr
 - after while loop, check for carry and add additional node if necessary
 
-Intuition:
+Pseudo:
 Iterate over both lists, from ones place first node , then tens place .. etc
 Add values of both lists. NOTE: And any leftover carry
     - Take last digit. Use that to initialize new node and append to result list
@@ -17,35 +17,44 @@ Space: O( max(a,b) + 1)
 """
 
 class Solution:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        # new list
         dummy = ListNode(-1)
-        p1 = l1
-        p2 = l2
-        p3 = dummy
+
+        i = l1
+        j = l2
+        k = dummy
+
+        # carry
         carry = 0
 
-        while p1 or p2:
-            x = p1.val if p1 else 0
-            y = p2.val if p2 else 0
+        while i or j:
+            # 1. add values and ANY leftover carry
+            val1 = i.val if i else 0
+            val2 = j.val if j else 0
+            total = val1 + val2 + carry
 
-            # max 18
-            xy_sum = x + y + carry
-            last_digit = xy_sum % 10
-            carry = 1 if xy_sum >= 10 else 0
+            # 2. Calculate new carry
+            if total >= 10:
+                carry = 1
+                total = total % 10
+            else:
+                carry = 0
+            
+            # 3. Create new Node for total
+            new = ListNode(total)
+            k.next = new
+            k = new
 
-            # new node with value of last digit
-            new_node = ListNode(last_digit)
-            p3.next = new_node
-            p3 = p3.next
-
-            # iterate list pointers if possible
-            if p1:
-                p1 = p1.next
-            if p2:
-                p2 = p2.next
-        # any leftover carry has to be added to new node
+            # iterate pointers if possible
+            if i:
+                i = i.next
+            if j:
+                j = j.next
+        # TODO: 4. if we still have carry, we still need to make node
         if carry:
-            new_node = ListNode(carry)
-            p3.next = new_node
-            p3 = p3.next
+            # create new node. Connect. Step.
+            new = ListNode(carry)
+            k.next = new
+            k = new
         return dummy.next
