@@ -13,46 +13,67 @@ Recursive Approach:
             - append the root
             - call DFS on left, then right
         - ** Implied else is base case, eventually at end the root will be NONE
-        
-Iterative Approach:
-- Initialize stack with root, and result array
-- POP the stack to process it, add to result array
-- PUSH / APPEND the child nodes to stack IF they exist
-    - do in reverse order because we pop in reverse
-
 """
-
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-# recursive solution, good if input small enough for call stack
-
 class Solution1:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         if root is None: 
             return []
         preorder_vals = []
         # recursively call dfs, starting at root, passing list we want to append
-        # NOTE: we do not need to have dfs return anything, list passed by reference
+        # NOTE: we do not need to have dfs return anything, global list passed by reference
         self.dfs(root, preorder_vals)
         return preorder_vals
     
     # another method, with self parameter
     def dfs(self, root, res):
-        # check if root. Append to array in order  ROOT -> LEFT  -> RIGHT
+        # implicit base case NONE node returns nothing
+
+        # recursive case. call dfs on children
         if root:
             res.append(root.val)
             self.dfs(root.left, res)
             self.dfs(root.right, res)
-            
-class Solution:
+"""
+Iterative: Stack of tuples (Node, Visited?)
+
+If visited, process node value
+If not visited, add (node.leftright, False) and (Node, TRUE) to stack
+"""
+class Solution2:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        
+        vals = []
+        # stack contains tuples of (Node, Visited?)
+        # Visited means we added children to stack already
+        stack = [(root, False)]
+        while stack:
+            node, visited = stack.pop()
+            # note: node or visited could be None ...
+            if not node: continue
+            # visited means we can process value
+            if visited:
+                vals.append(node.val)
+            # not visited, means add children to stack & mark visited REVERSED
+            # node -> L -> R  means push   R -> L -> node
+            else:
+                stack.append((node.right, False))
+                stack.append((node.left, False))
+                stack.append((node, True))
+        return vals
+    
+"""
+Iterative Approach w/ Stack:
+- Initialize stack with root, and result array
+- stack initialized with root
+- process Root first
+- append children to stack in reverse order, if children is not NONE
+"""
+class Solution3:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         if root is None:
             return []
-        
         # initialize stack with root
         stack = [root]
         vals = []

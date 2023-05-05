@@ -1,6 +1,10 @@
 """
 https://leetcode.com/problems/binary-tree-level-order-traversal/submissions/
 
+TODO: 
+    - We loop while queue
+    - Within while loop, we have FOR loop over level size == len(q)
+
 
 NOTE: 
     - While we are traversing we can decide whether to add None nodes to queue
@@ -25,19 +29,21 @@ class Solution:
         
         q = deque([root])
         
-        # while q, iterate thru all elemements in q using for loop
+        # while q, iterate thru all elements in q using for loop
         while q: 
             # elements of this tree level
             level = []
+            # level size is length of q, the nodes added by previous level
             level_size = len(q)
             
-            # wrap the pop and appending in a for loop over level_size
+            # TODO: we are mutating queue. Thus we must use the level_size we recorded before.
             for _ in range(level_size):
+                # pop front / left of queue
                 node = q.popleft()
-
-                # Process node, do something with it
+                # Process node value, write to level []
                 level.append(node.val)
                 
+                # append children to back / right of queue
                 if node.left:     
                     q.append(node.left)
                 if node.right:    

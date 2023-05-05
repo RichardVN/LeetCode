@@ -1,13 +1,6 @@
 """
-LEFT --> ROOT --> RIGHT
+Recursive
 """
-
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 class Solution1:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         if not root:
@@ -18,44 +11,39 @@ class Solution1:
         
     # in order:  left -> root -> right
     def dfs(self, root, vals):
-        # if root to make sure we not at end NONE base case
+        # implicit base case NONE node returns nothing
+
+        # recursive case. call dfs on children
         if root:
             self.dfs(root.left, vals)
             vals.append(root.val)
             self.dfs(root.right, vals)
 
 """
-Iterative approach
+Iterative: Stack of tuples (Node, Visited?)
 
-KEY: Have stack to keep track nodes to process, and root ptr to traverse tree
-
-Procedure:
-    - initialize empty stack
-    - if root:
-        - push node at root to stack
-        - root is now root.left  (go down left)
-    - else: (go thru stack)
-        - pop stack and process Node
-        - set root to Node.right
+If visited, process node value
+If not visited, add (node.leftright, False) and (Node, TRUE) to stack
 """
-class Solution:
-    def inorderTraversal(self, root: TreeNode) -> List[int]:
-        ans = []
-        stack = []
-        """NOTE: we have to check root, sometimes stack empty not done traversal"""
-        while stack or root:
-            # go as far down left as we can
-            if root:
-                stack.append(root)
-                root = root.left
-            # we have reached end of left subtree
-            else:
-                # cant go further, pop latest from stack
-                tmpNode = stack.pop()
-                # append node's value
-                ans.append(tmpNode.val)
-                # reassign root from None to the popped Node's right subtree
-                root = tmpNode.right
+class Solution3:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        vals = []
+        # let stack contain tuple of (node, visited?)
+        # Visited TRUE meaans that we have already appended its children
+            # and that node is ready for processing
+        stack = [(root, False)]
 
-        return ans
+        while stack:
+            node, visited = stack.pop()
+
+            if node:
+                # ready for process
+                if visited:
+                    vals.append(node.val)
+                # we push to stack in reverse order ... right -> root -> left
+                else:
+                    stack.append((node.right, False))
+                    stack.append((node, True))
+                    stack.append((node.left, False))
+        return vals
             

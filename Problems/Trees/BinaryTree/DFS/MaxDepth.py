@@ -1,9 +1,12 @@
 """
-Recursive solution:
-    - base case:   Height of None node returns 0
-        - NOTE: Return -1 if depth of single node considered 0
-    - Minimal Recursive case:   Height of a node with None children is 1 
-    - High Recursive case:  height of node with non-none children is max(children_depth) + 1
+https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
+Intuition:
+- global variable [] vs. Return?
+    - We just want an int. Answer of subtrees (especially NONE base case) used to solve larger problem
+- Subproblem breakdown:
+    - Base Case: Height of Node returns 0
+    - Max depth of this node is = max (max_depth_left, max_depth_right) + 1
+        -> MINIMAL (single node) case:   Height of a node with None children is 1         
 """
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:

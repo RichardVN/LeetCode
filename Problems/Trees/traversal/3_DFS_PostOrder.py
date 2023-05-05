@@ -1,15 +1,7 @@
-"""
-KEY: when adding vals to result list, add to beginning of deque
-"""
-
 from collections import deque
-
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+"""
+Recursive:
+"""
 class Solution:
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         if not root: return []
@@ -18,13 +10,51 @@ class Solution:
         return vals
     
     def dfs(self, root, vals):
+        # implicit base case NONE node returns nothing
+
+        # recursive case. call dfs on children
         if root:
             self.dfs(root.left, vals)
             self.dfs(root.right, vals)
             vals.append(root.val)
             
+"""
+Iterative: Stack of tuples (Node, Visited?)
 
-class Solution1:
+If visited, process node value
+If not visited, add (node.leftright, False) and (Node, TRUE) to stack
+"""
+class Solution2(object):
+    def postorderTraversal(self, root):
+        if not root:
+            return []
+        vals = []
+        # stack contains tuples (node, visited?)
+        stack =[(root, False)]
+
+        while stack:
+            node, visited = stack.pop()
+            # check if node isnt NONE
+            if node:
+                # if visited, process value
+                if visited:
+                    vals.append(node.val)
+                # if not visited, add children to stack, mark node as visited
+                else:
+                    # left -> right -> root REVERSED cuz stack
+                    stack.append((node, True))
+                    stack.append((node.right, False))
+                    stack.append((node.left, False))
+        return vals
+    
+"""
+Iterative: Deque for reversed results, Stack
+
+Solve for Root -> Right -> Left ... instead
+    - for stack we push left then right child
+    - Append Values in reverse, by .appendleft() to deque
+"""
+class Solution3:
     def postorderTraversal(self, root):
         print("iterative with deque")
         if not root: 
@@ -43,27 +73,3 @@ class Solution1:
                 stack.append(node.right)
         return res_vals
 
-# stack only solution
-class Solution1:
-    def postorderTraversal(self, root):
-        stack = []
-        result = []
-        while root or stack:
-            # traverse down left subtree
-            while root:
-                stack.append(root)
-                root = root.left
-            # no more in left subtree, set temp to last node's right child
-            temp = stack[-1].right 
-            # traverse down right subtree . threre is right subtree
-            if temp:
-                root = temp     # reassign root, continue while loop
-            # no right subtree
-            else:
-                temp = stack.pop()
-                result.append(temp.val)
-                # while the popped node IS the right child of last on stack, pop & append
-                while stack and temp == stack[-1].right:
-                    temp = stack.pop()
-                    result.append(temp.val)
-        return result

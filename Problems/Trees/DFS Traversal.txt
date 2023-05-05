@@ -22,13 +22,14 @@ RECURSION KEY NOTES:
     - We make successive recursive call on children DOWN the tree, until we reach smallest base case 
         ex. left_depth = dfs_depth(root.left)
         ex. left_p_found = dfs_LCA(root.left)
-    - The base case returns UP the tree, for bigger and bigger subproblems until main problem returns .
-        ex. if not root return None
-        ex. if not root return False
-    - Recursive Case: 
-        1. Process current Node, such that it works for single Node
-        2. Recursive call on all Children
-        3. Return answer UPWARD, based on return from children
+    - TODO: Structure of dfs helper:
+        - Base Case: returns UP the tree, for bigger and bigger subproblems until main problem returns .
+            ex. if not root return None
+            ex. if not root return False
+        - Recursive Case: TODO: make sure this works for single node case first 
+            1. Process current Node, such that it works for single Node
+            2. Recursive call on all Children
+            3. Return answer UPWARD, based on return from children
 
 - Q:  What answer are we trying to Return from recursive function?
     ex. "Maximum depth of tree with root at Current"
@@ -38,7 +39,7 @@ RECURSION KEY NOTES:
     ex. Lowest common ancestor if p and q found 
     --> use a GLOBAL variable in the main shell function that calls recursive function. Update on conditions met
     --> Use If result is NONE check to update on first solution bottom up
-- Q:  When to use global variable vs. Return from a dfs_function  
+- Q:  When to use global variable [] vs. Return from a dfs_function  
     - DFS function:  returns an answer about an entire subtree (ex. depth, contains, same, etc. )
             -> answer of subtree problems can be used to solve greater tree problem
                 ex. the sum of tree is the sum of left_subtree + right_subtree + current.val 
@@ -46,9 +47,21 @@ RECURSION KEY NOTES:
                 ex. MaxDepth = max(left_depth, right_depth) + 1
                 ex. MaxPathSumToLeaf = max(left_path, right_path) + root.val
     - Global:  returns an answer that is true only at a STATE of a recursive call (LCA, diameter at particular node)
-            -> the recursive answer of subproblems cant be used to solve answer of bigger problem:
+            -> the recursive answer of (left, right) subproblems cant be used to solve answer of bigger problem:
                 ex. the diamter of tree root is NOT diameter of left_subtree and right_subtree
                 ex. the max_path_sum of node does NOT have to go thru root. Is NOT max of left_sum, right_sum 
+
+
+ITERATIVE KEY NOTES: https://tinyurl.com/4uwts7fd (all python solutions, using visited)
+    - Initialize a stack containing only the Root.  
+    - We while loop through stack 
+        - Root processed first
+        - append left, right to stack ... 
+            TODO: IN OPPOSITE ORDER of how we want to process. Check if child exists before adding to stack.
+    - Inorder Iterative:
+        - Stack: keeps tuples of (node, visited)
+        - if visited, append value to res.  If not visited, push (node.leftright, False) and (node, True) to stack.
+    - We can attach a "value" to the node in a tuple. Ex. height at this node.
 
 TRAVERSAL NOTES:
 
