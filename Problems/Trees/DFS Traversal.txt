@@ -1,7 +1,11 @@
+Time: O(N) to traverse nodes
+Space: O(h) where h is height of tree ~ O(N) if leaning unbalanced tree
+
 def main(root):
     # IMPORTANT. NEED TO CONSIDER EMPTY TREE CASE IN MAIN
     if not root:
         return None 
+    # traverse tree nodes to find answer
     answer = dfs(root)
     return answer 
 
@@ -31,14 +35,16 @@ RECURSION KEY NOTES:
             2. Recursive call on all Children
             3. Return answer UPWARD, based on return from children
 
-- Q:  What answer are we trying to Return from recursive function?
+- Q1:  What answer are we trying to Return upwards from recursive function?
     ex. "Maximum depth of tree with root at Current"
     --> Make sure BASE CASE answers this question for NONE node and SINGLE node and
     --> Make sure what we "return Up" the tree is of same return type as answer node
-- Q:  What if we are looking for answer that occurs on some condition ANYWHERE in tree (NOT in complete return)?
-    ex. Lowest common ancestor if p and q found 
-    --> use a GLOBAL variable in the main shell function that calls recursive function. Update on conditions met
-    --> Use If result is NONE check to update on first solution bottom up
+- Q2:  What is the main problem? How can we break into subproblems?
+    ex.  main problem: are trees identical? ,  subproblems: are subtrees identical?
+- Q3:  What is the base case? (No node, or leaf node) .. we can solve subproblem directly.
+- Q4:  What is the recursive case?  .. we have to solve subproblem for subtrees first, before answering
+
+
 - Q:  When to use global variable [] vs. Return from a dfs_function  
     - DFS function:  returns an answer about an entire subtree (ex. depth, contains, same, etc. )
             -> answer of subtree problems can be used to solve greater tree problem
@@ -47,6 +53,7 @@ RECURSION KEY NOTES:
                 ex. MaxDepth = max(left_depth, right_depth) + 1
                 ex. MaxPathSumToLeaf = max(left_path, right_path) + root.val
     - Global:  returns an answer that is true only at a STATE of a recursive call (LCA, diameter at particular node)
+                The answer can lie at ANY point in the tree.
             -> the recursive answer of (left, right) subproblems cant be used to solve answer of bigger problem:
                 ex. the diamter of tree root is NOT diameter of left_subtree and right_subtree
                 ex. the max_path_sum of node does NOT have to go thru root. Is NOT max of left_sum, right_sum 

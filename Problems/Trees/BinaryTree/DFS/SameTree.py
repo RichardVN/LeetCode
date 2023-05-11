@@ -12,18 +12,18 @@ Recursive case:
 
 """
 class Solution:
-    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
-        # recursive dfs --> boolean
-        def dfs_same(root1, root2):
-            if not root1 and not root2:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        def dfs(p ,q) -> bool:
+            # base
+            if not p and not q:
                 return True
-            # one is none but not both
-            if not root1 or not root2:
+            # one but not the other
+            if not (p and q):
                 return False
-            # neither is none
-            if root1.val != root2.val:
+            if p.val != q.val:
                 return False
-            # Recursive case. Two nodes with equal values
-            return dfs_same(root1.left, root2.left) and dfs_same(root1.right, root2.right)
+
+            # recursive: True if (check subtrees, left and right are same)
+            return dfs(p.left, q.left) and dfs(p.right, q.right)
         
-        return dfs_same(p, q)
+        return dfs(p, q)

@@ -1,47 +1,49 @@
 """
-Given Tree S and and SubTree T
-Traverse all node in s:
-    check if subtree starting at Node equals sub tree T
-Time: Go thru N nodes, and M nodes in subtree, O(N * M)
+https://leetcode.com/problems/subtree-of-another-tree/
+
+TIME: O(NM)  where M is num nodes in Subtree
+
+For each node in Tree, call SameTree on p, q
+
+1. Write helper for SameTree(p,q)
+2. write isSubtree(p,q)
+    - q from SUBTREE is always passed down
+    - Subproblem:  existsSubtree if existsSubtree(L or R)
+    - base: 
+        if subtree root NONE =>  True, existsSubtree
+        if tree root NONE => False
+        if SameTree(p,q) => True
+    - Recursive:
+        no subtree found, recurse deeper
+        existsSubtree(L) OR existsSubtree(R)
+
 """
 class Solution:
-    def isSubtree(self, root: TreeNode, subRoot: TreeNode) -> bool:
-        def dfs_compare(root, subroot):
-            stack1 = [root]
-            stack2 = [subroot]
-            
-            while stack1 and stack2:
-                node1 = stack1.pop()
-                node2 = stack2.pop()
-                
-                # if both None
-                if not node1 and not node2:
-                    continue
-                # if one none
-                if not node1 or not node2:
-                    return False
-                # both have values
-                if node1.val != node2.val:
-                    return False
-                
-                # equal values, append children
-                stack1.append(node1.right)
-                stack1.append(node1.left)
-                
-                stack2.append(node2.right)
-                stack2.append(node2.left)
-            if stack1 or stack2:
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        
+        def dfs_same(p, q):
+            # if both None, it is same
+            if not p and not q:
+                return True
+            # recurse into children to find answer
+            if p and q and p.val == q.val:
+                return dfs_same(p.left, q.left) and dfs_same(p.right, q.right)
+            return False
+
+        # q is subtree root, always used as comparison
+        def dfs_subtree(p,q):
+            # base cases
+            if not p and not q:
+                return True
+            elif not p and q:
                 return False
-            return True
-        stack = [root]
-        while stack:
-            node = stack.pop()
-            if node.val == subRoot.val:
-                equal = dfs_compare(node, subRoot)
-                if equal:
-                    return True
-            if node.right:
-                stack.append(node.right)
-            if node.left:
-                stack.append(node.left)
-        return False
+            elif p and not q: 
+                return True
+            
+            # Use helper for current roots. Recurse over subtree from this node and compare.
+            if dfs_same(p, q):
+                return True
+            # no subtree found yet. Recurse deeper to send up answer.
+            return dfs_subtree(p.left, q) or dfs_subtree(p.right, q)
+
+        return dfs_subtree(root, subRoot)
