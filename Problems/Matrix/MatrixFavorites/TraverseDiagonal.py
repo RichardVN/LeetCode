@@ -1,9 +1,8 @@
 """                
 NOTE: 2 key facts:
 1. There are N + M - 1 diagonals in an N x M matrix
-2. Diagonals are defined by the sum of indicies (i+j) in a 2 dimensional array
-    a. Each diagonal can be identified by index_sum from 0 .... ( num_diagonals - 1 )
-3. The snake phenomena can be achieved by reversing every other diagonal level, therefore check if divisible by 2
+2. Diagonal values are grouped by sum of i + j indices
+3. to SNAKE: reverse every other diagonal level, therefore check if divisible by 2
 
 Approach:
     1. Traverse over each element in the matrix

@@ -39,7 +39,7 @@ RECURSION KEY NOTES:
     ex. "Maximum depth of tree with root at Current"
     --> Make sure BASE CASE answers this question for NONE node and SINGLE node and
     --> Make sure what we "return Up" the tree is of same return type as answer node
-- Q2:  What is the main problem? How can we break into subproblems?
+- Q2:  What is the main problem? How can we break into subproblems w/ subtree?
     ex.  main problem: are trees identical? ,  subproblems: are subtrees identical?
 - Q3:  What is the base case? (No node, or leaf node) .. we can solve subproblem directly.
 - Q4:  What is the recursive case?  .. we have to solve subproblem for subtrees first, before answering

@@ -10,7 +10,7 @@ General:
 
 LOOPS:
     - when using RANGE make sure that you pass in an INT
-    - can only use for VAL in X, if X is iterable NOT an int
+    - can only use for VAL in X, if X is iterable NOT an int ... (when IN, think of iterable)
     - Write out conjunctions of predicates FULLY
         - ex. while i < 0 or j < 0     NOT    while i OR j < 0:       <--- Infinite loop, basically while 1
     - If using two pointers, but one pointer is the i in a for loop, make sure you manually increment the other pointer
