@@ -18,8 +18,8 @@ dfs(root):
     # 1. Handle Current Node 
     # 2. Recursively call function on Child Nodes to return answer for left and right subtree
     # 3. Use return values from child nodes and Current Node processing 
-            a. Update global variable, OR 
-            b. return an answer upwards the tree
+            a. Update global variable ... (nonlocal only needed if changing value of non-array variable) 
+            b. OR return an answer upwards the tree
 
 RECURSION KEY NOTES: 
     - Generally we call recursive function on ROOT:

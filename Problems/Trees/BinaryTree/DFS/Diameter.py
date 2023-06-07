@@ -9,19 +9,22 @@ TODO KEYS:
 """
 class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
-        self.diameter = 0
-        # This is longest diameter thru main root,
-        _ = self.dfs_height(root)
+        # returns up depth of tree
+        def dfs(root):
+            nonlocal diameter
+            if not root:
+                return 0
 
-        return self.diameter
+            # recurse to find depth subtrees
+            depth_left = dfs(root.left)
+            depth_right = dfs(root.right)
 
-    def dfs_height(self, node) -> int:
-        if not node:
-            return 0
-        else:
-            # value of node doesn't matter
-            height_left = self.dfs_height(node.left)
-            height_right = self.dfs_height(node.right)
-            
-            self.diameter = max(self.diameter, height_left + height_right)
-            return max(height_left, height_right) + 1
+            #calc diameter and update
+            diameter = max(depth_left + depth_right, diameter)
+
+            depth = max(depth_left, depth_right) + 1
+            return depth
+        
+        diameter = 0
+        dfs(root)
+        return diameter
