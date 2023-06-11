@@ -20,9 +20,9 @@ Slow has travelled h distance to loop, and d distance inside loop   ->   h + d
 Fast has travelled twice the distance as slow, with nL nodes extra  ->   h + d + t + d  + nL  ... Disregard nL since it leads to same spot
 
 2 * Slow = Fast
-Fast and slow meet at  2(h + d)  = h + d + t + d 
+Distance Fast:      2(h + d)  = h + d + t + d 
                         h + d = t + d
-                        h = t
+                            h = t
 
 Distance beginning to X is same as X to loop entry
     - move slow to beginning and walk pointers one node at a time to find the intersection

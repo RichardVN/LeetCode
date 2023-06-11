@@ -37,7 +37,7 @@ Minimum Window: R - Tries to expand until a valid answer    L - Tries to greedil
         a. Update constraint variable based on r that is added to window
         b. WHILE VALID constraint conditions, shrink
             i.)  TODO:!! We are valid. UPDATE ANSWER if better
-            ii.) ** Update constraint variable from value we remove from window BEFORE increment l
+            ii.) TODO: ** Update constraint variable from value we remove from window BEFORE increment l
             iii.) increment l pointer
     4. return optimized value
 

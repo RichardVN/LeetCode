@@ -24,12 +24,11 @@ Space: O(log n)  or  O(N) timsort  for sorting.
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         result = []
-        
         # sort so we can use two sum II
         nums.sort()
         
         for i, num in enumerate(nums):
-            # Continue if outer loop i is duplicate. We use IF statement b/c for loop not while
+            # nums[i] is the first value in triplet. Increment if it is a dupe
             if i > 0 and nums[i] == nums[i-1]:
                 continue
             
@@ -45,7 +44,7 @@ class Solution:
                     left += 1
                 elif triplet_sum > 0:
                     right -= 1
-                # we found match
+                # TODO: Valid Triplet ->  1. Append Triplet , 2. increment left, 3. increment left if dupe value
                 else:
                     result.append([nums[i],nums[left], nums[right]])
                     left += 1       # only need to change left,
