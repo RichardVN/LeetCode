@@ -21,37 +21,32 @@ Approach:
         - height left smaller, update left
         - height right smaller, update right
         
-TIME: O(2N) two pointers
+TIME: O(N) two pointers walk in
 SPACE: O(1)
 """
 
 class Solution:
     def trap(self, height: List[int]) -> int:
-        # empty list
-        if not height:
-            return 0
+        l = 0
+        r = len(height) - 1
+        tallest_l = height[l]
+        tallest_r = height[r]
 
-        # initialize ptrs
-        left = 0
-        right = len(height) - 1
-        max_height_left = height[left]
-        max_height_right = height[right]
-        
-        result = 0
-        
-        while left < right:
-            if max_height_left <= max_height_right:
-                left += 1
-                water = max(max_height_left - height[left], 0)
-                result += water
-                # update max_height_left AFTER calculating water
-                max_height_left = max(height[left], max_height_left)
+        water = 0
+
+        while l < r:
+            # l is guaranteed shorter wall
+            if tallest_l < tallest_r:
+                l += 1
+                # 0 or greater. add water at this index
+                water += max(tallest_l - height[l], 0)
+                # update max seen on left
+                tallest_l = max(tallest_l, height[l])
             else:
-                right -= 1
-                water = max(max_height_right - height[right], 0)
-                result += water
-                max_height_right = max(max_height_right, height[right])
-                
-        return result
-        
+                r -= 1
+                water += max(tallest_r - height[r], 0)
+                tallest_r = max(tallest_r, height[r])
+
+        return water
+
         
