@@ -1,17 +1,22 @@
 """
 https://leetcode.com/problems/trapping-rain-water/solution/
 For each index i, the units of water trapped is:
-    min(max height to left, max height to right)  -  max height at i
+    min(max height to left, max height to right)  -  height at i
     
-TRICK: say we are finding water level
-       #
-       #     Y
-X      #     Y
+        ?  
+        ?       RRR
+LL  //  ?   ?   RRR
+    i
 
-It doesnt matter how tall the center column is, only matters that there is Y that taller
+Two pointers L and R that start from the end
+    - we know the max possible height from everything scanned left of L and right of R
+        - visualize everything between L and R as "Fog"
+    - At i, on the side w/ shorter wall:
+        - we have seen every possible wall height to left and we KNOW there exists a right wall that will be higher
+        - It doesn't matter the possible sizes of the right wall ... L has to be the limiting factor for water
 
 Approach:
-    - we can create arrays that says max left of i and max right of i for each i
+    - we can create 2 arrays that says max_height_left of i and max_height_right of i
     - OR, we just have two pointers, move the one on the side with smaller height
         - height left smaller, update left
         - height right smaller, update right
@@ -39,7 +44,7 @@ class Solution:
                 left += 1
                 water = max(max_height_left - height[left], 0)
                 result += water
-                # update max_height_left
+                # update max_height_left AFTER calculating water
                 max_height_left = max(height[left], max_height_left)
             else:
                 right -= 1
