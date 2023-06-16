@@ -37,17 +37,18 @@ RECURSION KEY NOTES:
 
 - Q1:  What answer are we trying to Return upwards from recursive function?
     ex. "Maximum depth of tree with root at Current"
-    --> Make sure BASE CASE answers this question for NONE node and SINGLE node and
+    --> Make sure BASE CASE answers this question for NONE node and SINGLE node
     --> Make sure what we "return Up" the tree is of same return type as answer node
+- Q2:   What do we have to pass DOWNWARDS to children via parameters?
 - Q2:  What is the main problem? How can we break into subproblems w/ subtree?
     ex.  main problem: are trees identical? ,  subproblems: are subtrees identical?
-- Q3:  What is the base case? (No node, or leaf node) .. we can solve subproblem directly.
+- Q3:  What is the base case? (No node, or leaf node) .. we know enought to solve subproblem directly.
 - Q4:  What is the recursive case?  .. we have to solve subproblem for subtrees first, before answering
 
 
 - Q:  When to use global variable [] vs. Return from a dfs_function  
     - DFS function:  returns an answer about an entire subtree (ex. depth, contains, same, etc. )
-            -> answer of subtree problems can be used to solve greater tree problem
+            -> answer and parameters of subtree == answers and parameter main problem
                 ex. the sum of tree is the sum of left_subtree + right_subtree + current.val 
                 ex. IsMirror of tree is  isMirror (left_subtree)  AND  isMirror (right_subtree)
                 ex. MaxDepth = max(left_depth, right_depth) + 1
