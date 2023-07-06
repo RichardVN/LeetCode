@@ -1,9 +1,10 @@
 """
-NOTE: characters are limited... ONLY 26. This is negligible work
-KEY TAKEAWAYS:
+NOTE: KEY TAKEAWAYS:
 - Constraint chars_to_flip should be <= k
     - chars_to_flip = window_lenth - most_freq_count 
 - Everytime step r:  add to hash map, check if we have new most_freq_count
+- Invalid state only lasts for one step until L increments
+    - We NEVER have to decrement most_freq_count because it will never lead to better result
 
 Why Window?
 - Contiguous
@@ -24,28 +25,26 @@ Space: O(26)
 from collections import Counter
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        # initialize constraints, optimizeable
+        char_counts = Counter()
         longest = 0
-        flipped = 0
-
-        # we need to know the most common char. Use hash map
-        char_counters = Counter()
-        most_frequent = 0
+        most_freq_count = 0
 
         l = 0
         for r in range(len(s)):
-            # we just stepped with r. Update constraint TODO: check max_freq AS we add to hash map
-            char_counters[s[r]] += 1
-            # is this now the most freq? TODO: all that matters is most_common_count, not most_common_char
-            most_frequent = max(most_frequent, char_counters[s[r]])
+            # update constaint
+            r_char = s[r]
+            char_counts[r_char] += 1  # is this most freq now?, TODO: all that matters is most_freq_COUNT
+            most_freq_count = max(char_counts[r_char], most_freq_count)
 
-            # shrink while invalid ... chars to flip is more than k 
-            while ((r - l + 1) - most_frequent) > k:
-                # remove l from window. update constraint
-                char_counters[s[l]] -= 1
+            # if invalid, step with l to make valid again
+            # if num_flips > k:
+            if (r-l+1) - most_freq_count > k:
+                # update char counter ... TODO: don't have to adjust most_freq, only way to get less num_flips is to have higher most_freq
+                l_char = s[l]
+                char_counts[l_char] -= 1
+                # inc L
                 l += 1
+            # valid again
+            longest = max(longest, r-l+1)
 
-            # valid again. record answer
-            longest = max(longest, r - l + 1)
-        
         return longest
