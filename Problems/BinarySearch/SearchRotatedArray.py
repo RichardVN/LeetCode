@@ -1,48 +1,37 @@
 """
 Approach: find if mid and target in left or right partition. Binary search
-    Time : O(log n)
-    Space: O(1)
 
-Notice After rotation:
-    - Bigger numbers on left partition, smaller numbers on right partition
+- ** 2D plot the rotated array (i, val)
+- TODO: only need to handle the rotated case
+- case m is in leftRotated:  when to search left or right of mid?
+- case m is in rightRotated:  when to search left or right of mid?
 
-Intuition:
-    - find middle idx
-    - if [mid] == target: return mid
-    - Left Sorted portion:  If [mid] >= [Left]
-        - Check right half if target > [mid]  OR  target not in left sorted
-        - else check to left of mid
-    - else Right Sorted Portion
-        - check left half if target < [mid] OR target not in right sorted
-        - else check to right of mid
+
+Time : O(log n)
+Space: O(1)
 """
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        l = 0 
+        l = 0
         r = len(nums)-1
-        
+
         while l <= r:
-            mid = l + ((r-l) // 2)
+            m = l + (r-l) // 2
+
+            if nums[m] == target:
+                return m
             
-            # found mid
-            if nums[mid] == target: 
-                return mid
-            
-            # adjust mid depending where mid and target is
-            
-            # mid is in left sorted portion. It is possible middle and left are same value
-            if nums[mid] >= nums[l]:
-                # check to right of mid
-                if target > nums[mid] or target < nums[l]:
-                    l = mid + 1
+            # TODO: only have to handle rotated case
+            # m in left rotated .. greater or EQUAL to L
+            if nums[m] >= nums[l]:
+                if nums[m] < target or target < nums[l]:
+                    l = m + 1
                 else:
-                    r = mid -1
-            # else right portion
+                    r = m-1
             else:
-                # check left of mid
-                if target < nums[mid] or target > nums[r]:
-                    r = mid - 1
+                if nums[m] > target or target > nums[r]:
+                    r = m-1
                 else:
-                    l = mid + 1
+                    l = m+1
         return -1

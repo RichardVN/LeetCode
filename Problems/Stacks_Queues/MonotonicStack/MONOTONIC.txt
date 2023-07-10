@@ -1,0 +1,42 @@
+https://leetcode.com/discuss/study-guide/2347639/A-comprehensive-guide-and-template-for-monotonic-stack-based-problems Keywords "nearest min" "next higher val" -> Think Monotonic Stack (vals increasing or decreasing)
+
+MONOTONIC STACK: 
+- A stack that is only increasing / decreasing.   We tradeoff Space for efficient Time
+- If looking next Greater:  we push items on stack wthat are pending next greater
+    - The stack's state is INVERSE of what we are looking for
+    - looking for next greater (>) then stack is decreasing or equal (<=)
+- TODO: `while stack and (condition)`
+
+Push() items that are pending some value or condition... 
+Pop() :  condition fulfilled, so we resolve by popping
+    ex. valid parenthesis:  stack that is pending closing parenthesis, we push if open
+    ex. next greater number: stack that is pending greater number, we push if less OR equal
+
+
+
+TEMPLATE: 
+- the stack contains index of array items, not items themselves
+- For loop to iterate thru array
+    - inner While loop to POP on a CONDITION (stackTop ? Array[i])
+- "NEXT":  we process poppedTop in while loop
+- "PREVIOUS":  we process stackTop AFTER while loop  ... we have to use STRICT operator
+- At end of for loop we push i to stack
+
+    stack = []
+    nextGreater = [-1] * len(nums)
+
+    for i, num in enumerate(nums):
+        # TODO: 1. Loop to POP while we have found Condition for stackTop and Num
+        while stack and <stack_top_element> `OPERATOR` num:           # Operator is >, >=, <, <=
+            # if pending condition satisfied, we pop
+            poppedTop = stack.pop()
+
+            # TODO: 2a. process poppedTop?  ... NEXT
+            # nextGreater[poppedTop] = i
+
+        # TODO: 2b. do something with remaining stackTop after pops?   ... PREVIOUS   (we popped until we hit previous greater)
+        if stack:
+            #  previousGreater[i] = stack[-1]
+        
+        # TODO: 3. push the current INDEX on to stack
+        stack.append(i)

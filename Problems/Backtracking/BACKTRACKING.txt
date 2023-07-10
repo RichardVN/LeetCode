@@ -1,0 +1,22 @@
+How many subsets of collection with N items (combinations Choose any) -> 2^N combinations
+    - O( N * 2^N)  ... length of subsets * num subsets
+    - Include item or not include?  Tree w/ 2 decision branches, and height of N choices
+How many permutations of collection with N items, using all items?  -> N!   (each choice limits options by 1)
+    - General formula  :  N! / (N - pick_amount)!
+
+
+TEMPLATE:
+
+# backtrack function:  Param i :  the index that we make the decision on
+def dfs(i):
+    # Base Case ... e.g.  i is out of bounds
+    finishProcessing()
+    return
+
+    # Recursive case ... make decision, the recursive call into next choice
+    chooseInclude()
+    dfs(i+1)
+
+    chooseExclude()
+    dfs(i+1)
+    

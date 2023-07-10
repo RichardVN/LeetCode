@@ -2,6 +2,7 @@
 COMMON MISTAKES
 
 General:
+    - most likely want to stick to using // only for division between positive integers.
     - using = instead of ==
     - need to check if key in dictionary, before changing value of d[key]
     - When using a loop, you must iterate over an ITERABLE.  such as Range(int)
@@ -31,6 +32,10 @@ Strings:
 Array:
     - Pointers Are just INDEX INTEGERS  -  NOT actual array values
     - arr_pointer = len(arr) - 1   ... NOT   arr_pointer = arr[N-1]
+
+Binary Search:
+    - think of binary search when given SORTED array
+    - while (l <= r)
 
 Linked List:
     - If we access cur.next.next, cur.next cannot be None
