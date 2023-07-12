@@ -1,10 +1,17 @@
 """
-BST definition:  for a node.val, ALL nodes in right subtree need to be strictly greater
-    - We can’t just compare children with parent. 
-    - Need to have left_boundary and right_boundary.. 
+prob/subprob:
+    - dfs(root) is valid iff dfs(root.left) and dfs(root.right) is valid
 
-Create a dfs helper that returns upwards whether the subtree is valid
-Pass DOWN: the next root to check, l_bound, r_bound
+dfs approach
+- Do NOT just compare root with child vals
+- we need to know the L and R val boundaries of everything seen above
+
+-> Returns bool is valid?
+dfs (root, l_bound, r_bound)
+    # base NONE -> valid
+    # root.val out of bounds -> False
+    # recursively check children
+
 """
 
 class Solution:

@@ -1,22 +1,64 @@
-How many subsets of collection with N items (combinations Choose any) -> 2^N combinations
-    - O( N * 2^N)  ... length of subsets * num subsets
-    - Include item or not include?  Tree w/ 2 decision branches, and height of N choices
-How many permutations of collection with N items, using all items?  -> N!   (each choice limits options by 1)
-    - General formula  :  N! / (N - pick_amount)!
+### Backtracking (General)
+- number_subsets is (number of decision branches) ^ (number of decisions height)
+- Time complexity is : number_subsets * size_subset
+- TODO: if the input has duplicated nums, we have to SORT to avoid repeated work
+
+- dfsBacktrack(i)  structure for SUBSETS and COMBINATIONS:
+    - BaseAppend: when do we append  COPY of subset to subsets?
+    - BaseInvalid: when is i or any other condition invalid?  
+    - Decision Tree
+        - 1. Append, take choice at i
+        - 2. dfs(i+1)          # dfs(i) we are allowed to re-use candidate[i]
+        - 3. pop choice at i  
+        - *  WHILE loop, increment i past dupes 
+        - 4. dfs(i+1)           # dfs again if "done" with candidate [i]. (not option for wordSearch)
+
+### SUBSETS
+- Subsets:  equivalent of adding together all n Choose k, where k is 1 to N
+
+Time:    O( 2^N * N )  ... number of subsets * time to copy subset to answer
+Space:   O(N)
+
+2-Branch DECISION TREE :  Take or not Take?  (Branch size = 2, Tree size = N)
+ex. subsets of [4,8]
+
+                        []                  --- dfsIndex(0)  .. take 4?
+                []              [4]         --- dfsIndex(1)  .. take 8?
+            []      [8]     [4]     [4, 8]
+
+### COMBINATIONS 
+- Specific type of subsets, but we have additional base case to append when subset hits size k choices.
+
+Time:  O(N^k)
+Space: O(k)
+
+N-Way decision tree:  Choose from N candidates, then choose from remaining N-1 candidates, ...etc
+    - if Num chosen as first item, CANNOT use candidates left of Num because order does not matter
+ex. Candidates [1,2,3] choose 2
+
+                                            []
+        [1]                     [2]                  [3]             [4]
+[1,2]  [1,3]  [1,4]       [2,3]     [2,4]            [3,4]            X
 
 
-TEMPLATE:
+### PERMUTATIONS 
+- do NOT pass in index, or call multiple dfs(i+1) ... we do NOT "exhaust" nums from prior indices
+- if we can use a num as many times as we'd like (e.g phone combo), we DO NOT have to pop()
+- We can pick any num as long as it is not in current permutation []
+- TODO: if duplicates, create Counter() for numCount, and check if numCount > 0 before appending
 
-# backtrack function:  Param i :  the index that we make the decision on
-def dfs(i):
-    # Base Case ... e.g.  i is out of bounds
-    finishProcessing()
-    return
+Time: O(N! * N)
+Space: O(N)
 
-    # Recursive case ... make decision, the recursive call into next choice
-    chooseInclude()
-    dfs(i+1)
 
-    chooseExclude()
-    dfs(i+1)
-    
+- dfsBacktrack()  structure for PERMUTATIONS:
+    - BaseAppend: when do we append  COPY of permutation (usually at some length)?
+    - BaseInvalid: when are we invalid? NOTE: we don't pass in i, so no index check
+    - Decision Tree
+        For option in options:
+            if option valid:
+                - 1. Append, pick first valid choice
+                - 2. dfs()              # Only one dfs call. We do not dfs with i + 1, because we do not "exhaust" candidate[i]
+                - 3. pop, undo pick     # Skip this line if we HAVE to take option (e.g. phone digit)
+
+    - If duplicates in input -> numCount = Counter(nums)
