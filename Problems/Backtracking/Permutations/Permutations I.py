@@ -27,6 +27,7 @@ class Solution:
             
         perm = []
         perms = []
+        # no need to pass in index, for each decision we can pick all candidates
         backtrack()
         return perms
 

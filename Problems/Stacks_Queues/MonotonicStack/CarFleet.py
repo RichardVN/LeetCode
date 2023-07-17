@@ -4,6 +4,8 @@ clump to fleet if a behind_car has faster finish time than ahead_car
 
 Maintain a stack of strictly increasing fleet times. 
 - only append a time if it is greater than time at top of stack
+
+TIME: O(N LOG N)
 """
 
 class Solution:

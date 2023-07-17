@@ -4,15 +4,13 @@
 - TODO: if the input has duplicated nums, we have to SORT to avoid repeated work
 
 - dfsBacktrack(i)  structure for SUBSETS and COMBINATIONS:
-    - BaseAppend: when do we append  COPY of subset to subsets?
-    - BaseInvalid: when is i or any other condition invalid?  
-    - Decision Tree
-        - 1. Append, take choice at i
-        - 2. dfs(i+1)          # dfs(i) we are allowed to re-use candidate[i]
-        - 3. pop choice at i  
-        - *  WHILE loop, increment i past dupes 
-        - 4. dfs(i+1)           # dfs again if "done" with candidate [i]. (not option for wordSearch)
-
+    - BaseAppend: when to append COPY of subset[] to totalSubsets[]? -- if subset we always append, if combo we append at certain length k
+    - BaseInvalid: when to return on invalid condition?  -- e.g. runningSum > Target ... note that index is already bounded by for loop  
+    - FOR j in range(i, len(candidates))  --  (Decision Tree) Loop thru all possible candidates for our given i 
+        if j > i and candidates[j] == candidates[j-1]  ** TODO: handle duplicate input values, sorted
+        combo.append(candidates[j])     -- 1. Pick candidate
+        dfs(j+1)                        -- 2. Recursively call next decision. With updated index, and remaining candidates
+        combo.pop()                     -- 3. We have just reached a base case. pop candidate from (1) so we can iterate for loop to next candidate
 ### SUBSETS
 - Subsets:  equivalent of adding together all n Choose k, where k is 1 to N
 
@@ -52,13 +50,13 @@ Space: O(N)
 
 
 - dfsBacktrack()  structure for PERMUTATIONS:
-    - BaseAppend: when do we append  COPY of permutation (usually at some length)?
+    - BaseAppend: when do we append  COPY of permutation (usually when len(perm) == len(nums))?
     - BaseInvalid: when are we invalid? NOTE: we don't pass in i, so no index check
     - Decision Tree
-        For option in options:
+        For option in options:  # TODO: it there are dupes, we loop thru optionCount.keys()
             if option valid:
-                - 1. Append, pick first valid choice
-                - 2. dfs()              # Only one dfs call. We do not dfs with i + 1, because we do not "exhaust" candidate[i]
-                - 3. pop, undo pick     # Skip this line if we HAVE to take option (e.g. phone digit)
+                - 1. perm.append(option) # pick first valid choice
+                - 2. dfs()               # (main difference from subset) The candidates are the same, we do not "exhaust" candidate[i] and increment an index
+                - 3. perm.pop()          # We have just reached a base case. pop candidate from (1) so we can iterate for loop to next candidate
 
     - If duplicates in input -> numCount = Counter(nums)

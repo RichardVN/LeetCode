@@ -19,7 +19,7 @@ TEMPLATE:
 - For loop to iterate thru array
     - inner While loop to POP on a CONDITION (stackTop ? Array[i])
 - "NEXT":  we process poppedTop in while loop
-- "PREVIOUS":  we process stackTop AFTER while loop  ... we have to use STRICT operator
+- "PREVIOUS":  we process stackTop AFTER while loop  ...  >= or <= in while condition
 - At end of for loop we push i to stack
 
     stack = []

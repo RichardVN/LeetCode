@@ -35,3 +35,34 @@ class Solution:
         # first valid candidate at index 0
         dfs(0, 0)
         return combos
+    
+
+"""
+Alternative solution using for loops:
+- For loops still keeps us in valid indices
+- Additional base cases:
+    - when to append combo (total == target)
+    - when to stop exploring (total > target)
+"""    
+class Solution2:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        # must add to target. Pass down total sum so far
+        def dfs(i, total):
+            # Base append ..
+            if total == target:
+                combos.append(combo[:])
+            if total > target:
+                return
+            # candidates are always the same... only total limits
+            for j in range(i, len(candidates)):
+                combo.append(candidates[j])
+                # TODO: instead of j + 1, we can repeat the current number
+                dfs(j, total + candidates[j])
+                # its only at this point, we can proceed j to another candidate
+                combo.pop()
+
+
+        combo, combos = [], []
+        # first valid candidate at index 0
+        dfs(0, 0)
+        return combos

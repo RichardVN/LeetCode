@@ -5,6 +5,7 @@ Same as Permutations I, but with duplicate inputs:
     - RecursiveDecision Case:  append the Num if we have "remaining" Num to use (numCount > 0)
 
 """
+from collections import Counter
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         def dfs():

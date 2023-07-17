@@ -20,8 +20,8 @@ class Solution:
         # array of product to left
         product_left = 1
         for i in range(len(nums)):
-            res[i] = product_left       #TODO:  assign product_left at i BEFORE multiplying by num at i
-            product_left *= nums[i]
+            res[i] = product_left       #TODO:  assign leftover product FIRST
+            product_left *= nums[i]     # Then we calculate product to be assigned at next index
         print(res)
         # now we get product_right and multiply with whatever is at i
         product_right = 1

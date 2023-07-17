@@ -38,11 +38,11 @@ class Solution2:
             subsets.append(subset[:])
 
             # base : Remaining values we need to decide INCLUDE or EXCLUDE
-            for i in range(i,len(nums)):
+            for j in range(i,len(nums)):
                 # decision
-                subset.append(nums[i])
+                subset.append(nums[j])
                 # Decision made. Make decisions starting at next index
-                dfs(i+1)
+                dfs(j+1)
                 # backtrack decision
                 subset.pop()
 

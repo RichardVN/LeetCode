@@ -13,7 +13,7 @@ Space: O(N) to maintain current subset while backtracking
 """
 
 class Solution:
-    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+    def subsetsWithDup(self, nums):
         def dfs(i):
             # made decision for each nums[i]
             if not i < len(nums):
@@ -33,3 +33,31 @@ class Solution:
         subset, subsets = [], []
         dfs(0)
         return subsets
+    
+"""
+Alternative using For Loops
+- Subsets -> we always append
+- for loop handles index bounds
+"""
+class Solution2:
+    def subsetsWithDup(nums):
+        def dfs(i):
+            # append this subset before decision
+            subsets.append(subset[:])
+
+            for j in range(i, len(nums)):
+                # we just popped , dont want to use same num
+                if j > i and nums[j] == nums[j-1]:
+                    continue
+                subset.append(nums[j])
+                dfs(j+1)
+                # subset.pop()
+
+        nums.sort()
+        subset, subsets = [],[]
+        dfs(0)
+        return subsets
+
+c2 = Solution2
+res = c2.subsetsWithDup(nums=[1,2,3])
+print(res)

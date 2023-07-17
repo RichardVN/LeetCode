@@ -14,12 +14,15 @@ class Solution:
             if len(combo) == len(digits):
                 combos.append(combo)
                 return
-            if i > len(digits):
-                return
-            # look thru all options
+
+            # look thru all options for our given i
             for c in digitToChar[digits[i]]:
-                dfs(i+1, combo + c)
-            # TODO: we DO NOT have  to pop() because we DO NOT have a "do not take" case. we always use digit
+                # pick candidate c 
+                combo += c
+                # dfs call with remaining candidates and updated i
+                dfs(i+1, combo)
+                # we have reached base case, pop our candidate pick and iterate to next candidate
+                combo = combo[:-1]
 
         digitToChar = {
             "2": "abc",

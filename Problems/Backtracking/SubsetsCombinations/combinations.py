@@ -31,4 +31,26 @@ class Solution:
         # first valid candidate is 1
         dfs(1)
         return combos
-        
+
+"""
+Alternative Solution using For Loop
+- append case:  we append only subsets at certain length
+- for loop handles index bounds
+"""        
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        def dfs(i):
+            # append case?
+            if len(combo) == k:
+                combos.append(combo[:])
+                return
+            # decision , bounded
+            for j in range(i,n+1):
+                combo.append(j)
+                dfs(j+1)
+                combo.pop()
+            return
+
+        combo , combos = [], []
+        dfs(1)
+        return combos
