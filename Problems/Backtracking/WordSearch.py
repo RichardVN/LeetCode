@@ -38,7 +38,9 @@ class Solution:
                 or dfs(r, c + 1, i + 1)
                 or dfs(r, c - 1, i + 1)
             )
+            # we have just reached base cases with lines above
             path.remove((r, c))
+            # no dfs(i+1) ... we cannot decide to skip a sletter
             return res
 
             

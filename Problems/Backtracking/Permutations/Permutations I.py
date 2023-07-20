@@ -5,7 +5,7 @@ BaseAppend Case:  when we hit length of original nums
 Recursive Decision Case:  for loop through all nums, and take the num if it is not already in perm
 
 TIME:  O(N! * N)  ,    N! permutations and permutation_size is N
-SPACE: O(N)
+SPACE: O(N) for call stack
 """
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:

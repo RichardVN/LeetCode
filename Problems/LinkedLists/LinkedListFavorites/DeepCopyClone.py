@@ -26,29 +26,27 @@ Intuition:
 
 
 class Solution:
-    def copyRandomList(self, head: 'Node') -> 'Node':
-        # for any node, map the node to its clone
-        node_to_clone = dict()
-        # TODO:  if random points to node instead of none
-        node_to_clone[None] = None
-        # create clone nodes mapped to original nodes, unlinked
-        current = head
-        while current:
-            # instantiate clone. NOTE: make new node, dont
-            # use current ptr, which points to same original node
-            # key : value,   Node ptr: clone node
-            cloned_node = Node(current.val)
-            node_to_clone[current] = cloned_node
-            current = current.next
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        c = head
 
-        # link clone nodes
-        current = head
-        clone_head = node_to_clone[head]
-        while current:
-            clone = node_to_clone[current]
-            # clone's next is the CLONE of current's next
-            clone.next = node_to_clone[current.next]
-            clone.random = node_to_clone[current.random]
-            current = current.next
+        # we need to have copy equivalent of NONE "node"
+        oldToCopy = {None:None}
 
-        return clone_head
+        # build out the nodes
+        while c:
+            newNode = Node(c.val)
+            oldToCopy[c] = newNode
+            c = c.next
+        
+        c = head
+
+        # wire the nodes
+        while c:
+            # access copy node
+            copyNode = oldToCopy[c]
+            # add wiring ... wire to COPIES as well
+            copyNode.next = oldToCopy[c.next] 
+            copyNode.random = oldToCopy[c.random]
+            c = c.next
+
+        return oldToCopy[head]

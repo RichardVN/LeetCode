@@ -29,18 +29,18 @@ Graph Representations (worksheet 40)
 Find Reachable (worksheet 41)
 ******************
 findReachable (graph g, vertex start) {
-create a set of reachable vertices, initially empty. call this r.
-create a container for vertices known to be reachable. call this c
-add start vertex to container c
-while the container c is not empty {
- 	remove first entry from the container c, assign to v
-	if v is not already in the set of reachable vertices r 
+create a set of reachable vertices, initially empty. call this R.
+create a container for vertices known to be reachable. call this C
+add start vertex to container C
+while the container C is not empty {
+ 	remove first entry from the container C, assign to v
+	if v is not already in the set of reachable vertices R 
 	{
-		add v to the reachable set r
-		add the neighbors of v to the container c *if they are not already reachable
+		add v to the reachable set R
+		add the neighbors of v to the container C *if they are not already reachable
  	}
 }
-return r
+return R
 } 
 *** 
 Container c types: 

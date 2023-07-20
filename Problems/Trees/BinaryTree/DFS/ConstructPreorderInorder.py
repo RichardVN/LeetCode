@@ -32,7 +32,7 @@ class Solution:
             left_partition_size = mid - il      # number of elements in [il, mid)
             preorder_split = pl + 1 + left_partition_size   # pl was processed, add 1.  preorder split is start of right subtree
 
-            # recursively build subtrees
+            # recursively build subtrees TODO: we have used up FIRST item of preorder, and MIDDLE item of inorder
             root.left = dfs_build(pl + 1, preorder_split - 1, il, mid-1 ) 
             root.right = dfs_build(preorder_split, pr, mid+1, ir )
 
