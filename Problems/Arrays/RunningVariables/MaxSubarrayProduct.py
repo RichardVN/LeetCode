@@ -11,7 +11,7 @@ class Solution:
         curMin, curMax = 1, 1
 
         for num in nums:
-            # we have to save curMax for calculation of curMin
+            # we have to save curMax for calculation of curMin ... or reset to just this 'num'
             newMax = max(num, num * curMax, num * curMin)
             # next value could be negative, which would mean curMin would be used for max
             curMin = min(num, num * curMax, num * curMin)

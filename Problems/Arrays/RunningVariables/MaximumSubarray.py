@@ -1,16 +1,16 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        res = 0
+        res = max(nums)
 
-        prefix = 0 
+        runningSum = 0
         for num in nums:
-            # if prefix (prior subarray) before is not contributing, discard and reset
-            if prefix < 0:
-                prefix = 0
-            prefix += num
+            runningSum += num
+            res = max(res,runningSum)
 
-            res = max(res,prefix)
-
+            # if we made subarray negative, we reset
+            if runningSum < 0:
+                runningSum = 0
+                
         return res
 
 #  Sliding window approach.

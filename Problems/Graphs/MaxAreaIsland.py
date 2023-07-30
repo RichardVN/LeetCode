@@ -22,7 +22,7 @@ class Solution:
             islandArea += 1
             maxArea = max(maxArea, islandArea)
 
-            grid[r][c] = 0
+            grid[r][c] = 0 #NOTE: alternatively, add (r, c) to "seen" set
             dfs(r+1,c)
             dfs(r-1,c)
             dfs(r,c+1)
