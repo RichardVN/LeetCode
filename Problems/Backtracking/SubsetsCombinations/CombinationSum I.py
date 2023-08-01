@@ -24,7 +24,7 @@ class Solution:
                 return
             # decision tree
             combo.append(candidates[i])
-            # TODO: we keep duping this candidate until base case
+            # TODO: we use any amount of this candidate until base case target
             dfs(i, total + candidates[i])
             # our first pop is when we are at first valid i
             combo.pop()

@@ -25,9 +25,18 @@ def canSum(target, nums):
         if remaining < 0 or i >= len(nums):
             return False
         # recursive decision ... take or not take item
-        # take (TODO: can re-use item i)      Do not use item at i
+        # take (TODO: can re-use any amt item i)      Do not use item i at all
         memo[remaining] = dfs(i, remaining - nums[i]) or dfs(i + 1, remaining)
         return memo[remaining]
+
+        """  FOR LOOP VERSION
+        for j in range(i, len(nums)):
+            if dfs(j, remaining - nums[j]):
+                memo[remaining] = True
+                return True
+        memo[remaining] = False
+        return False
+        """
 
     memo = {}
     # start with biggest problem "consider 0 through end"
