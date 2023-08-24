@@ -32,10 +32,12 @@ class Solution:
             # 1. Process. convert to 0
             grid[r][c] = "0"
             # 2. Recursively call on neighbor in all directions
-            dfs_traverse(r-1, c)
-            dfs_traverse(r+1, c)
-            dfs_traverse(r, c-1)
-            dfs_traverse(r, c+1)
+            for x, y in directions:
+                dfs_traverse(r+y, c+x)
+            # dfs_traverse(r-1, c)
+            # dfs_traverse(r+1, c)
+            # dfs_traverse(r, c-1)
+            # dfs_traverse(r, c+1)
             
             # 3. nothing to return, changed grid 
             
@@ -46,6 +48,8 @@ class Solution:
         
         R = len(grid)
         C = len(grid[0])
+        directions = [(1,0),(-1,0), (0,1), (0, -1)]
+
         
         num_islands = 0
         
@@ -59,4 +63,48 @@ class Solution:
                     num_islands += 1
         
         return num_islands
+
+"""
+Iterative solution
+"""
+from collections import deque
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        def dfsFlood(r,c):
+            q = deque([(r,c)])  # TODO: This structure represents the "call stack"
+
+            while q:
+                # go to next function call
+                r,c = q.popleft()
+
+                # TODO: equivalent to Base case of "function"
+                if (
+                    r < 0 or
+                    r >= rows or
+                    c < 0 or
+                    c >= cols or
+                    grid[r][c] != '1'
+                ):
+                    continue
+                grid[r][c] = '0'
+
+                # TODO: recursively make "function call", by adding new state to stack / queue
+                for x,y in directions:
+                    newR = r+y
+                    newC = c+x
+                    q.append((newR, newC))
+
+
+        rows = len(grid)
+        cols = len(grid[0])
+
+        directions = [(1,0),(-1,0), (0,1), (0, -1)]
+
+        numIslands = 0
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == '1':
+                    numIslands += 1
+                    dfsFlood(r,c)
         
+        return numIslands

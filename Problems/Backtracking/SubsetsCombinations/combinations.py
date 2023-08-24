@@ -35,7 +35,7 @@ class Solution:
 """
 Alternative Solution using For Loop
 - append case:  we append only subsets at certain length
-- for loop handles index bounds
+- TODO: for loop handles index bounds and SKIP Choice
 """        
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:

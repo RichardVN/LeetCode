@@ -6,6 +6,31 @@ The number that is duplicated may be duplicated MANY times
 """
 
 """
+TODO: Positive int input only.  Only access array with POSITIVE abs(index)
+Approach 3: marking with negatives
+    - NOTE: THIS CHANGES ORIGINAL ARRAY. Another pass to fix it
+    - values are limited to within index range, we can use marking
+
+Time: O(N) to pass and mark
+Space: O(1), but we modify original
+"""
+    
+class Solution3: 
+    def findDuplicate(self, nums) -> int:
+        for i, num in enumerate(nums):
+            idx_to_mark = abs(num) - 1
+            # that index label has been seen
+            if nums[idx_to_mark] < 0:
+                res = abs(num)
+            else:
+                # mark that index label as seen
+                nums[idx_to_mark] = - nums[idx_to_mark]
+        map(lambda item: abs(item), nums)
+        return res
+
+
+
+"""
 Optimal Approach:  cycle detection
 Node = Index
 Value = Value at Index
@@ -62,24 +87,3 @@ class Solution:
         return None
 
 
-"""
-Approach 3: marking with negatives
-    - NOTE: THIS CHANGES ORIGINAL ARRAY
-    - values are limited to within index range, we can use marking
-
-Time: O(N) to pass and mark
-Space: O(1), but we modify original
-"""
-    
-class Solution3: 
-    def findDuplicate(self, nums) -> int:
-        for i, num in enumerate(nums):
-            idx_to_mark = abs(num) - 1
-            # that index label has been seen
-            if nums[idx_to_mark] < 0:
-                return(abs(num))
-            else:
-                # mark that index label as seen
-                nums[idx_to_mark] = - nums[idx_to_mark]
-        print(nums)
-        return -1

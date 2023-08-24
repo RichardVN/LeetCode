@@ -2,7 +2,7 @@
 NOTE: This decision tree is more similar to subset question .. Combinations can be different lengths
 2-way decision tree:
     - Take or NOT take num
-    - we can take num multiple times
+    - we can take num multiple times -> i remains same -> dfs(i, constraint change)
     - ex. left subtree contains all subset that HAVE to contain X copies of num
 
 There is no limit to dupes or combo length... just limited by target

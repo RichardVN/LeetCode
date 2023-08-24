@@ -27,3 +27,34 @@ class Solution:
             return dfs(p.left, q.left) and dfs(p.right, q.right)
         
         return dfs(p, q)
+    
+
+"""
+Iterative solution
+"""
+from collections import deque
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        def check(n1, n2):
+            if not n1 and not n2:
+                return True
+            if not n1 or not n2:
+                return False
+            if n1.val != n2.val:
+                return False
+            return True
+        
+        q = deque([(p, q)])
+        
+        while q:
+            levelSize = len(q)
+            for _ in range(levelSize):
+                pnode, qnode = q.popleft()
+                if not check(pnode, qnode):
+                    return False
+                if pnode and qnode:
+                    q.append((pnode.left, qnode.left))
+                    q.append((pnode.right, qnode.right))
+        
+        return True
+                    

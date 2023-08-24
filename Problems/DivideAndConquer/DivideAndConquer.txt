@@ -1,0 +1,4 @@
+Divide and Conquer vs. DP:
+    - subproblem are NOT overlapping
+    - equally partition problem into subproblems, then use cummulative answers of subproblems
+    - condition for BASE CASE is based of SIZE of input 

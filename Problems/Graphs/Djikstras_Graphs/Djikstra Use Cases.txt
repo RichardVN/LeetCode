@@ -1,0 +1,12 @@
+When to use Djikstra's? 
+- Unweighted, NonNegative Graphs:  find shortest path from ONE source to ALL destinations
+- Can work on directed and non-directed graphs
+
+Implementation:
+* might have to process edges into a map of Node -> Neighbor List
+- Similar to BFS, but use minHeap instead of queue or stack data structure
+- Push / pop  tuples to minHeap:  (distanceFromSource, Node)        # TODO: note that distance has to be first, for sorting
+- Whenever we push, we add to the distanceNodeToNeighbor to distanceFromSource
+
+TIME:  O(V + E * logV)
+SPACE: O(V)

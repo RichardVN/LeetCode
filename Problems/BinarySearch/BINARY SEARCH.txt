@@ -1,0 +1,3 @@
+When to use binary Search?
+    - Sorted array
+    - Throw away half of the search space if it does not meet some bool Condition

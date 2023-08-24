@@ -1,0 +1,19 @@
+When to use DFS?
+- Shortest Path of UNWEIGHTED graph
+- Traverse all vertices of graph
+
+
+Implementations:
+- Iteration:
+    - queue "toVisit" and set "Visited"
+    - we pop Nodes from 'toVisit' stack and mark them as visited 
+    - we only add neighbor to queue if there are NOT visited
+
+
+TODO: Complexities:
+    - Traversal / Shortest Path (exit early):    
+        Time:  O(V + E),  
+        Space: O(V)
+    - Backtracking:  (similar to subset I backtrack)
+        Time:  O(2^V * V)
+        Space: O(V)

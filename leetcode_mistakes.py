@@ -2,7 +2,7 @@
 COMMON MISTAKES
 
 General:
-    - most likely want to stick to using // only for division between positive integers.
+    - most likely want to stick to using // only for division between positive integers ... otherwise use math.ceil() or math.floor()
     - using = instead of ==
     - need to check if key in dictionary, before changing value of d[key]
     - When using a loop, you must iterate over an ITERABLE.  such as Range(int)

@@ -4,17 +4,13 @@ TODO:  The possible eating rates (k) are in range [1 .... max_pile_size]
     - if valid k, update answer and Try smaller rate. Else try larger rate.
 
 """
+import math
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         # helper function: is it possible finish bananas at rate k?
         def isEatable(k):
-            hours = 0
-            for pile in piles:
-                hours += pile // k
-                # pile remainder
-                if pile % k != 0:
-                    hours += 1
-            return hours <= h
+            hrs = [math.ceil(pile / k) for pile in piles]   # TODO: use / float division so we can round up
+            return sum(hrs) <= h
 
         # possible rates are 1 through max_pile size
         # imagine [1 .... max_pile]

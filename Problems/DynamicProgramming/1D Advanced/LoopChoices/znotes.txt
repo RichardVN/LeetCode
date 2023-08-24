@@ -1,0 +1,3 @@
+Iteration in our recurrence relation.
+
+Instead of choosing from a static number of options, we usually add a for-loop to iterate through a dynamic number of options and choose the best one.

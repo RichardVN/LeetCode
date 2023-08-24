@@ -21,7 +21,33 @@ Pseudo:
         - update start and end around the new center i by using length // 2
     - return whatever start and end are at, inclusive
 """
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        def longestPali(l, r):
+            longest = 0
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                longest = r-l+1
+                l -= 1
+                r += 1
+            # reached end
+            return longest
 
+        resStart = 0
+        resEnd = 0
+        for i in range(0, len(s)):
+            thisLongest = max(longestPali(i,i), longestPali(i, i+1))
+            # update longest marker, if new best
+            if thisLongest > resEnd - resStart + 1:
+                # longest can be odd  "aba"
+                if thisLongest % 2 != 0:
+                    resStart = i - thisLongest // 2
+                    resEnd = i + thisLongest // 2
+                # or even "abba"
+                else:
+                    resStart = i - thisLongest // 2 + 1
+                    resEnd = i + thisLongest // 2
+        
+        return s[resStart : resEnd + 1]
 
 
 class Solution:

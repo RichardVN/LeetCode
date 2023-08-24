@@ -26,7 +26,7 @@ class Solution:
         curr = head
 
         while curr:
-            # TODO: set after here
+            # TODO: set after within loop
             after = curr.next
             # reverse the next "arrow"
             curr.next = before
@@ -35,3 +35,27 @@ class Solution:
             curr = after
         # curr ends on NONE so return before
         return before
+
+
+"""
+Recursive solution:
+
+- reverse everything besides head. 
+- Set tail.next to head.  
+- set head.next to NONE (b.c head is now the tail)
+
+"""
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        def rev(head):
+            if head is None or head.next is None:
+                return head
+            
+            after = head.next
+            revList = rev(after)    # return head of reversed list
+            after.next = head       # attach head to new tail end
+            head.next = None        # head is now the tail
+
+            return revList
+        
+        return rev(head)

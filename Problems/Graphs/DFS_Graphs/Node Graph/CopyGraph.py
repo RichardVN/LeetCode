@@ -25,7 +25,7 @@ class Solution:
                 return oldToCopy[node]
             
             copyNode = Node(node.val)
-            oldToCopy[node] = copyNode
+            oldToCopy[node] = copyNode # TODO: do this before recursive calls. or else it will trivially cycle back
 
             for n in node.neighbors:
                 copyNode.neighbors.append(dfs(n))

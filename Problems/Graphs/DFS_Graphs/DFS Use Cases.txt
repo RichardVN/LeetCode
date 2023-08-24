@@ -1,0 +1,35 @@
+When to use DFS?
+- Traverse ALL nodes in graph  
+    * start dfs at each unvisited node
+    - Deep copy graph
+    - Count number of distinct provinces / islands 
+
+- Find ANY path from Source to Destination  
+    * start dfs only from Source node
+- Find ALL paths from Source to Destination using BACKTRACKING 
+    * start dfs from Source node.  Append and Pop from path[]
+
+
+
+Implementations:
+- Recursion:  DFS Traversal helper
+    1. add node to visited Set  TODO: only need to mark visited if it is UNDIRECTED graph
+    2. recursively dfs thru neighbors List IF neighbor NOT visited
+    *. If backtracking:  append() -> dfs -> pop()
+
+- Iteration:
+    - stack "toVisit" and set "Visited"
+    - we pop Nodes from 'toVisit' stack and mark them as visited 
+    - we only add neighbor to stack if there are NOT visited
+
+
+TODO: Complexities:
+    - Traversal  or  AnyPath (exit early):    
+        Time:  O(V + E),  
+        Space: O(V)
+    - Backtracking DAG no cycle:  (similar to subset I backtrack)
+        Time:  O(2^V * V)
+        Space: O(V)
+    - Backtracking undirected:  
+        Time:   O( V! )
+        Space: O(V)

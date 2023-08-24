@@ -1,3 +1,9 @@
+"""
+
+TIME:  O(N * 2^N)  ... Combinations question. For each index, we decide to partition or not. 
+SPACE: O(N)
+"""
+
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         def dfs(i):

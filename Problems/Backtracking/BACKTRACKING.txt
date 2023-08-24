@@ -9,7 +9,7 @@
     - FOR j in range(i, len(candidates))  --  (Decision Tree) Loop thru all possible candidates for our given i 
         if j > i and candidates[j] == candidates[j-1]  ** TODO: handle duplicate input values, sorted
         combo.append(candidates[j])     -- 1. Pick candidate
-        dfs(j+1)                        -- 2. Recursively call next decision. With updated index, and remaining candidates
+        dfs(j+1)                        -- 2. Recursively <append,dfs,pop> at next decision state. With updated index, and remaining candidates TODO: if we can use same num twice, call dfs(i)
         combo.pop()                     -- 3. We have just reached a base case. pop candidate from (1) so we can iterate for loop to next candidate
 ### SUBSETS
 - Subsets:  equivalent of adding together all n Choose k, where k is 1 to N
@@ -56,7 +56,7 @@ Space: O(N)
         For option in options:  # TODO: it there are dupes, we loop thru optionCount.keys()
             if option valid:
                 - 1. perm.append(option) # pick first valid choice
-                - 2. dfs()               # (main difference from subset) The candidates are the same, we do not "exhaust" candidate[i] and increment an index
+                - 2. dfs()               # (main difference from subset) order DOES matter. We cannot choose incrementally via an index i
                 - 3. perm.pop()          # We have just reached a base case. pop candidate from (1) so we can iterate for loop to next candidate
 
     - If duplicates in input -> numCount = Counter(nums)

@@ -1,5 +1,5 @@
 """
-Find Midpoint using number of elements / length of array
+TODO: Using length of array -> RIGHT midpoint
 """
 print('-- Midpoint using number of items len(arr) -- ')
 
@@ -14,7 +14,7 @@ print('Even array left mid', even_array[mid_idx_left])
 print('Even array right mid', even_array[mid_idx_right])
 
 """
-Find Midpoint using first index and last index
+TODO: First Index and Last Index -> LEFT midpoint
 NOTE: if low is just 0 index,  then   mid = len(arr)-1 // 2
 """
 print('-- Midpoint using lowest, highest indices -- ')
@@ -36,8 +36,8 @@ print('Even array right mid', even_array[mid_idx_right])
 
 
 """
-Find midpoint of linked list
-NOTE: in even node list, this retrieves the right mid point
+Find midpoint of linked list using Fast / Slow
+TODO:  in even node list, this retrieves the RIGHT mid point
 """
 # slow = head
 # fast = head
