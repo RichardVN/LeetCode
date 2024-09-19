@@ -2,47 +2,28 @@ https://courses.cs.washington.edu/courses/cse326/03wi/lectures/RaoLect20.pdf
 
 Algorithm Use Cases: 
 
-We can summarize this as below-
-1) One source and One Destination
-    - Use A* Search Algorithm (For Unweighted as well as Weighted Graphs)
-2) One Source, All Destination 
-    - Use BFS (For Unweighted Graphs)
-    - Use Dijkstra (For Weighted Graphs without negative weights)
-    - Use Bellman Ford (For Weighted Graphs with negative weights)
-3) Between every pair of nodes
-    - Floyd-Warshall
-    - Johnson’s Algorithm
 
-Graph Representations (worksheet 40)
-- 1.Adjacency Matrix
-	- 2D array
-	- 1 at (2,3) indicates edge between city 2 and city 3
-	- *Weighted: replace 1 with actual value
-- 2.Edge List
-	ex. Pendleton: {Pueblo, Phoenix}
-		Node         Neighbors
-	- stores only edges, more efficient for sparse graph w/ few connections
-	-* weighted pairs
-	ex. Pendleton: {(Pueblo,10),(Phoenix,15)}
+Visit Set and processing data structure:
+- DFS stack:
+	- Visit all nodes once (cloning, num islands)
+	- Backtracking allowed (word Search)
+- BFS queue:
+	- Find shortest path for unweighted graph without backtracking (shortest path in binary matrix)
+- ** Djikstra min_heap (dist_from_source, Node)
+	- Find best path from source to any destination, unweighted graph
+- ** Prim's MST min_heap (cost_to_attach, Node)
+	- Find lowest cost Minimum Spanning Tree that includes all nodes
+
+Time: O(V + E)  ** if we use min heap, this becomes O(V + E * log V) because of heap push is log heap_size
+Space: O(V)
 
 
-Find Reachable (worksheet 41)
-******************
-findReachable (graph g, vertex start) {
-create a set of reachable vertices, initially empty. call this R.
-create a container for vertices known to be reachable. call this C
-add start vertex to container C
-while the container C is not empty {
- 	remove first entry from the container C, assign to v
-	if v is not already in the set of reachable vertices R 
-	{
-		add v to the reachable set R
-		add the neighbors of v to the container C *if they are not already reachable
- 	}
-}
-return R
-} 
-*** 
-Container c types: 
-stack: Depth first Search
-queue: Breadth-first Search
+Usage of Dynamic Programming for pathing problems
+- Usually for a MATRIX GRID
+- Traversal towards a direction with NO backtracking ... e.g. move towards smaller subproblem
+
+Time / Space:  usually O(M*N) , which represents the number of possible "states" or grid cells
+
+
+Implementations:
+- TODO: use defaultdict when creating adjacency list maps or indegree counts 

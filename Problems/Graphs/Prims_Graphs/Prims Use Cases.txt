@@ -1,0 +1,6 @@
+When to use Prim's?
+- use to find Minimum Spanning Tree of Nodes.  Aka. what is the lowest cost way to connect all vertices?
+- Implementation:  identical to Djikstra, except we add (cost, Node) to min Heap instead of (distance_from_source, Node)
+
+Time: O(E log V)  .... max heap size is V, but we can push E times   TODO: same as djikstra
+Space: O(V)   .... data structure space, heap of V vertices

@@ -1,0 +1,4 @@
+Attributes of palindrome:
+- for a given substring s, palindromes can only exist from i number of centers
+- palindrome and reversed(palindrome) are the same
+- each character count of palindrome should be even parity, except for at most one

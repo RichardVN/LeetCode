@@ -11,15 +11,8 @@ Approach:
 - if we find a new longest palindrome:
     - update start and end of current longest palindrome so we can return the actual string
     
-Pseudo:
-- initialize start and end indices of longest palindrome to 0
-- step through each character of string
-    - call expand method for s, i , i
-    - call expand method for s, i , i+1
-    - retrieve max of the two lengths
-    - check IF this length is > current longest length (end - start):
-        - update start and end around the new center i by using length // 2
-    - return whatever start and end are at, inclusive
+Time: O(N^2)
+Space: O(1)
 """
 class Solution:
     def longestPalindrome(self, s: str) -> str:

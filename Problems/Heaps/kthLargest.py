@@ -3,13 +3,10 @@ TODO:
 Key: we don't need original values, pop all the the mins until we have k largest values
 
 Pseudo:
-    1. INIT:  
-        - heapify the array in O(N) time.  Remove mins until we have k largest
-
-    2. ADD:
-        - heappush val to heap O(log K)
-        - Check if we exceed k values:  => heappop()
-        - the "kth largest" is actually smallest value, so return minheap[0]
+    NOTE: because we are starting with empty 'heap' ... we don't have to heapify
+    - heappush val to heap O(log K)
+    - Check if we exceed k values:  => heappop()
+    - TODO: the "kth largest" is actually smallest remaining value, so return minheap[0]
 
 // Heap Method Complexities //
 Heapify:  O(N)

@@ -1,6 +1,7 @@
 """
 TODO: Djikstra's is identical to iterative BFS ... except for our datastructure we use a MIN heap of tuples:  (distance_from_source, Node)
 
+To see if we visited all nodes, check Visited set with number of nodes
 
 TIME: O(V  +  E * log V)  ...  push/pop on heap of size V costs log V.  We do this for E edges.
 SPACE: O(E + V) ...  Edges and Heap of V vertices

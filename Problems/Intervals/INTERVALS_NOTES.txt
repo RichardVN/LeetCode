@@ -1,0 +1,12 @@
+- Generally want to sort Intervals by START 
+- We can use constants START = 0, END = 1 to increase readability
+
+
+- Handle merging by iterating thru Intervals and appending to a res []
+    1. Current segment is AFTER -> just append segment
+    2. Any Overlap (partial or contained) -> Take MIN(start) and MAX(end) and append
+
+- Inserting
+    1. current segment is BEFORE -> append to left []
+    2. current segment is AFTER -> append to right []
+    3. any overlap -> Update MIN(start) and MAX(end)

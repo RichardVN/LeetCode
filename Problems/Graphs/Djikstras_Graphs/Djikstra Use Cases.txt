@@ -8,5 +8,5 @@ Implementation:
 - Push / pop  tuples to minHeap:  (distanceFromSource, Node)        # TODO: note that distance has to be first, for sorting
 - Whenever we push, we add to the distanceNodeToNeighbor to distanceFromSource
 
-TIME:  O(V + E * logV)
+TIME:  O(V + E * logV) => O (E log V)
 SPACE: O(V)
